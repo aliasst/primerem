@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Middleware\OnlyAuth;
+use App\Http\Middleware\OnlyGuest;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -11,7 +13,10 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+        $middleware->alias([
+            'only-guest' => OnlyGuest::class,
+            'only-auth' => OnlyAuth::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

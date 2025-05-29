@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Вход в аккаунт')
+@section('title', 'Ремонт в премиальных новостройках Москвы. Полностью онлайн')
 
 @section('content')
 
@@ -21,6 +21,9 @@
                                 <li><a href="#content">Контент</a></li>
                             </ul>
                         </div>
+
+
+
                         <div class="header-item mes-item">
                             <ul>
                                 <!--
@@ -42,6 +45,8 @@
                                  </a></li> -->
                             </ul>
                         </div>
+
+                        <div><a href="{{route('login')}}" class="orange-btn orange-btn-min">Кабинет</a></div>
                     </div>
                     <div class="intro-top">
                         <h1>

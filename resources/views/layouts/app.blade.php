@@ -12,7 +12,7 @@
     <meta property="og:url" content="" />
     <meta property="og:image" content="/img/logo.png" />
 
-    <title> @yield('title')Ремонт в премиальных новостройках Москвы. Полностью онлайн</title>
+    <title> @yield('title')</title>
     <meta name="description" content="Вы получите самый изысканный ремонт, с равными ежемесячными платежами. Без посещения объекта. Весь процесс онлайн, без нервов.">
 </head>
 <body>
