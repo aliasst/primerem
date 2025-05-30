@@ -29,6 +29,27 @@
 
             @endif
         </div>
+
+
+
+        <div class="py-5 text-center">
+            <div class="logo-cell">Prime<span>REM</span></div>
+
+            <h2>Выберите действие</h2>
+        </div>
+
+        <div class="cabinet-menu" id="cabinet-menu">
+            <a href="" class="btn orange-btn orange-btn-min" role="button">Счета</a>
+            <a href="" class="btn orange-btn orange-btn-min" role="button">Акты</a>
+            <a href="" class="btn orange-btn orange-btn-min" role="button">Этапы</a>
+            <a href="" class="btn orange-btn orange-btn-min" role="button">Отчеты</a>
+            <a href="" class="btn orange-btn orange-btn-min" role="button">Подрядчики</a>
+            <a href="" class="btn orange-btn orange-btn-min" role="button">Закупки</a>
+
+        </div>
     </div>
+
+
+
 
 @endsection

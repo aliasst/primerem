@@ -1,11 +1,16 @@
 @extends('layouts.auth')
 
-@section('title', 'Вход в Личный кабинет')
+@section('title', 'Регистрация')
 
 @section('content')
     <section class="main">
         <div class="container">
             <div class="row justify-content-center">
+
+                <div class="col-12">
+                    <div class="logo-cell">Prime<span>REM</span></div>
+                </div>
+
                 <div class="col-md-10">
                     <div class="request-card card auth-card">
                         <div class="card-head">Регистрация</div>

@@ -9,12 +9,12 @@ Route::get('/', HomeController::class)->name('home');
 
 
 Route::controller(\App\Http\Controllers\LoginController::class)->group(function() {
-    Route::get('login', 'index')->name('login.form');
-    Route::post('login', 'login')->name('login');
+    Route::get('login', 'index')->middleware(['only-guest'])->name('login.form');
+    Route::post('login', 'login')->middleware(['only-guest'])->name('login');
     Route::post('logout', 'logout')->name('logout');
 });
 
-Route::controller(\App\Http\Controllers\RegisterController::class)->group(function() {
+Route::controller(\App\Http\Controllers\RegisterController::class)->middleware(['only-guest'])->group(function() {
     Route::get('register', 'index')->name('register.form');
     Route::post('register', 'register')->name('register');
 });
