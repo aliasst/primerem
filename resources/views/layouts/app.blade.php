@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/fonts.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/style.css?v=2.01" />
+    <link rel="stylesheet" href="css/style.css@php echo '?'.mt_rand()@endphp" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="" />
     <meta property="og:image" content="/img/logo.png" />
