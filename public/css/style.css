@@ -274,6 +274,11 @@ section H3 {
     border-radius: 28px;
 }
 
+.orange-btn-center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .header-row .orange-btn-min {
     padding: 10px 20px;
     border-radius: 24px;
@@ -1340,7 +1345,375 @@ section.content {
 }
 
 
+
+.requests {
+    padding-bottom: 30px;
+}
+
+table.requests {
+    width: 100%;
+    border: 0px;
+    /*border-collapse: collapse;*/
+    border-collapse: separate;
+    border-spacing: 0 0.5em;
+    padding-bottom: 0;
+
+}
+
+table.requests th {
+    padding: 0.8rem 1.2rem;
+    font-weight: 400;
+    color: rgb(0, 0, 0);
+    font-size: 19px;
+    line-height: 26px;
+    text-align: left;
+    white-space: nowrap;
+}
+
+table.requests td {
+    padding: 0.8rem 1.2rem;
+    color: rgb(0, 0, 0);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    text-align: left;
+}
+
+table.requests tr.td-danger td {
+    color: red;
+
+}
+table.requests thead tr {
+    background-color: transparent!important;
+}
+
+table.requests tr:nth-child(odd) {
+    background-color: rgb(243, 244, 243);
+}
+
+table.requests tr:nth-child(even) {
+    background-color: rgb(243, 244, 243);
+}
+
+table.requests td:first-child {
+    border-left-style: solid;
+    border-top-left-radius: 100px;
+    border-bottom-left-radius: 100px;
+}
+
+table.requests td:last-child {
+    border-right-style: solid;
+    border-bottom-right-radius: 100px;
+    border-top-right-radius: 100px;
+}
+
+.checkselect {
+    position: relative;
+    text-align: left;
+    display: table;
+    width: auto;
+}
+
+
+.checkselect .form-control {
+
+
+    transition: unset;
+
+}
+
+
+.checkselect .form-control:focus {
+    color: inherit;
+    background-color: #fff;
+    border-color: inherit;
+    outline: 0;
+    box-shadow: none
+}
+
+
+.checkselect-control {
+    position: relative;
+    padding: 0 !important;
+}
+
+.checkselect-control select {
+    position: relative;
+    height: 54px;
+}
+
+.checkselect-over {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    cursor: pointer;
+}
+
+.checkselect.disabled .form-control {
+    background-color: #e9ecef;
+    opacity: 1;
+}
+
+.select2-container.select2-container--disabled .select2-selection--single .select2-selection__rendered {
+    background-color: #e9ecef !important;
+    opacity: 1;
+}
+
+.checkselect-popup {
+    display: none;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+    position: absolute;
+    top: 100%;
+    left: 0px;
+    border: 1px solid #dadada;
+    border-top: none;
+    background: #fff;
+    z-index: 9999;
+    overflow: auto;
+    user-select: none;
+}
+
+.checkselect label {
+    position: relative;
+    display: block;
+    margin: 0;
+    padding: 5px 15px 5px 15px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    cursor: pointer;
+}
+
+.checkselect.checkselect-border label {
+    font-size: 16px;
+    line-height: 27px;
+}
+
+
+.checkselect-popup input {
+    position: absolute;
+    top: 5px;
+    left: 8px;
+    margin: 0 !important;
+    padding: 0;
+
+}
+
+.checkselect-popup label:hover {
+    background: #EBEBEB;
+    color: #111;
+}
+
+.checkselect-popup label.js-active {
+    background: #EBEBEB;
+    color: #111;
+}
+
+
+.checkselect-popup fieldset {
+    display: block;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+.checkselect-popup fieldset input {
+    left: 15px;
+}
+
+.checkselect-popup fieldset label {
+    padding-left: 32px;
+}
+
+.checkselect-popup legend {
+    display: block;
+    margin: 0;
+    padding: 5px 8px;
+    font-weight: 700;
+    font-size: 1em;
+    line-height: 1.1;
+}
+
+
+.onecheck .checkselect-popup input {
+    display: none;
+
+}
+
+.checkselect.onecheck {
+    padding: 0 0;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.checkselect.onecheck.checkselect-mw {
+    max-width: 370px;
+}
+
+.checkselect .checkselect-control select {
+
+    border-color: #000;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 0;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    padding: 4px 35px 6px 15px;
+    cursor: pointer;
+    width: 100%;
+    background: transparent;
+}
+
+.checkselect.checkselect-border .checkselect-control select {
+    border-color: #000;
+    font-size: 16px;
+    line-height: 27px;
+    border: 1px solid rgb(202, 202, 202);
+    border-radius: 10px;
+    background: #fff;
+}
+
+
+.checkselect .checkselect-control.js-active select {
+
+    border-color: #000;
+    border-bottom: 0;
+    border-radius: 0 0 0 0;
+
+}
+
+.checkselect.checkselect-border .checkselect-control.js-active select {
+    border-color: rgb(202, 202, 202);
+    border-radius: 10px 10px 0 0;
+}
+
+
+.checkselect-popup {
+    border-color: #000;
+    border-width: 1px;
+    border-style: solid;
+    border-top: 0;
+    border-radius: 0 0 0 0;
+}
+
+.checkselect.checkselect-border .checkselect-popup {
+    border-color: rgb(202, 202, 202);
+    border-radius: 0 0 10px 10px;
+
+
+}
+
+
+.checkselect-control .accord-ico {
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    width: 13px;
+    height: 8px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 10px;
+    margin: auto;
+    z-index: 992;
+}
+
+
+.checkselect-control .accord-ico:before {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 6px;
+    vertical-align: middle;
+    background: url(../img/icons/checkselect_2.svg) no-repeat center center;
+    background-size: cover;
+
+}
+
+
+.checkselect-control.js-active .accord-ico {
+    -webkit-transform: rotate(-180deg);
+    -ms-transform: rotate(-180deg);
+    transform: rotate(-180deg);
+    right: 13px;
+    top: -3px;
+}
+
+
 @media screen and (max-width: 600px) {
+
+    table.requests thead {
+        display: none;
+    }
+
+    table.requests tr {
+        display: block;
+        margin-bottom: 1rem;
+        border-radius: 10px;
+    }
+
+    table.requests td {
+        display: block;
+        text-align: right;
+    }
+
+    table.requests td:before {
+        content: attr(aria-label);
+        float: left;
+        font-weight: bold;
+    }
+
+
+    table.requests tr:nth-child(odd) td {
+        background-color: unset;
+    }
+
+    table.requests td:first-child {
+        background-color: unset!important;
+        border-radius: 0 0 0 0;
+    }
+
+    table.requests td {
+        border-bottom: 1px dashed rgb(202, 202, 202);
+    }
+
+    table.requests tr.d-red td{
+        border-bottom: 1px dashed rgb(238, 238, 238);
+    }
+
+
+
+    table.requests td:last-child {
+        border-bottom: 0;
+    }
+
+
+
+    table.requests td:first-child {
+        border-left-style: solid;
+        border-top-left-radius: 100px;
+        border-bottom-left-radius: 100px;
+        border-bottom-right-radius: 100px;
+        border-top-right-radius: 100px;
+        background-color: rgb(243, 244, 243) !important;
+    }
+
+    table.requests td:last-child {
+        border-right-style: solid;
+        border-bottom-right-radius: 100px;
+        border-top-right-radius: 100px;
+    }
+
 
     .card-head {
         padding: 15px 0;

@@ -12,15 +12,24 @@ class User extends Authenticatable
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var list<string>
-     */
+    public static  $statuses = [
+        'active' => 'Активный',
+        'inactive' => 'Не активный',
+    ];
+
+    public static  $roles = [
+        'superadmin' => 'Суперадмин',
+        'project_admin' => 'Админ проекта',
+        'project_user' => 'Пользователь проекта',
+    ];
+
     protected $fillable = [
         'name',
         'email',
         'password',
+        'role',
+        'status',
+        'project_id',
     ];
 
     /**

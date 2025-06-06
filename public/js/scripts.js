@@ -2,6 +2,96 @@
 
     $(document).ready(function () {
 
+
+        function setChecked(target) {
+
+            var checked = $(target).find("input[type='checkbox']:checked").closest('label').html();
+
+            if (checked) {
+                $(target).find('select option:first').html(checked);
+            } else {
+                $(target).find('select option:first').html('---');
+            }
+        }
+
+        $.fn.checkselect = function() {
+
+
+            this.wrapInner('<div class="checkselect-popup"></div>');
+            this.prepend(
+                '<div class="checkselect-control">' +
+                '<span class="accord-ico"></span>' +
+                '<select class="form-control" ><option></option></select>' +
+                '<div class="checkselect-over"></div>' +
+                '</div>'
+            );
+
+            this.each(function(){
+
+                setChecked(this);
+            });
+
+
+            this.find('input[type="checkbox"]').click(function(){
+
+                //var checkselect = $(this).closest('checkselect').find('label').removeClass('js-active');
+                $(this).closest('.checkselect').find('label').removeClass('js-active');
+
+                $(this).closest('label').addClass('js-active');
+
+                var checkbox = $(this);
+                var name = checkbox.prop('name');
+                if (checkbox.is(':checked')) {
+                    $(':checkbox[name="' + name + '"]').not($(this)).prop({
+                        'checked': false,
+                        'required': false
+                    });
+                }
+                $(this).closest('.checkselect').find('.checkselect-popup').css('display', 'none');
+                $(this).closest('.checkselect').find('.checkselect-control').removeClass('js-active');
+
+                setChecked($(this).parents('.checkselect'));
+
+            });
+
+            this.parent().find('.checkselect-control').on('click', function(){
+
+                $checkselect = $(this).closest('.checkselect');
+
+                if(!$checkselect.hasClass("disabled")) {
+                    $(this).addClass('js-active');
+                    $popup = $(this).next();
+                    $('.checkselect-popup').not($popup).css('display', 'none');
+                    if ($popup.is(':hidden')) {
+                        $popup.css('display', 'block');
+                        $(this).find('select').focus();
+                    } else {
+                        $popup.css('display', 'none');
+                        $(this).removeClass('js-active');
+                    }
+
+
+                }
+
+
+            });
+
+            $('html, body').on('click', function(e){
+
+                if ($(e.target).closest('.checkselect').length == 0){
+                    $('.checkselect-control').removeClass('js-active');
+                    $('.checkselect-popup').css('display', 'none');
+                }
+            });
+        };
+
+        $('.checkselect-js').checkselect();
+
+
+
+
+
+
         var accordions = document.getElementsByClassName("accordion");
 
         for (var i = 0; i < accordions.length; i++) {

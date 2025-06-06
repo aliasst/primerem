@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\Cabinet\DashboardController;
+use App\Http\Controllers\Cabinet\ProjectController;
+use App\Http\Controllers\Cabinet\ProjectUserController;
+use App\Http\Controllers\Cabinet\SuperUserController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -39,4 +42,29 @@ Route::controller(\App\Http\Controllers\AuthController::class)->group(function()
 
 Route::prefix('cabinet')->middleware(['only-auth'])->group(function (){
     Route::get('/', [DashboardController::class, 'index'])->name('cabinet.dashboard');
+
+    Route::get('/projects', [ProjectController::class, 'index'])->name('cabinet.project.index');
+    Route::get('/projects/create', [ProjectController::class, 'create'])->name('cabinet.project.create');
+    Route::post('/projects', [ProjectController::class, 'store'])->name('cabinet.project.store');
+    Route::get('/projects/{project}', [ProjectController::class, 'show'])->name('cabinet.project.show');
+    Route::get('/projects/{project}/edit', [ProjectController::class, 'edit'])->name('cabinet.project.edit');
+    Route::put('/projects/{project}', [ProjectController::class, 'update'])->name('cabinet.project.update');
+    Route::delete('/projects/{project}', [ProjectController::class, 'destroy'])->name('cabinet.project.destroy');
+
+    Route::get('/projects/{project}/users', [ProjectUserController::class, 'index'])->name('cabinet.project.user.index');
+    Route::get('/projects/{project}/users/create', [ProjectUserController::class, 'create'])->name('cabinet.project.user.create');
+    Route::post('/projects/{project}/users', [ProjectUserController::class, 'store'])->name('cabinet.project.user.store');
+
+    Route::get('/projects/{project}/users/{user}/edit', [ProjectUserController::class, 'edit'])->name('cabinet.project.user.edit');
+    Route::put('/projects/{project}/users/{user}', [ProjectUserController::class, 'update'])->name('cabinet.project.user.update');
+    Route::delete('/projects/{project}/users/{user}', [ProjectUserController::class, 'destroy'])->name('cabinet.project.user.destroy');
+
+
+    Route::get('/superusers', [SuperUserController::class, 'index'])->name('cabinet.superuser.index');
+    Route::get('/superusers/create', [SuperUserController::class, 'create'])->name('cabinet.superuser.create');
+    Route::post('/superusers', [SuperUserController::class, 'store'])->name('cabinet.superuser.store');
+    Route::get('/superusers/{user}/edit', [SuperUserController::class, 'edit'])->name('cabinet.superuser.edit');
+    Route::put('/superusers/{user}/edit', [SuperUserController::class, 'update'])->name('cabinet.superuser.update');
+    Route::delete('/superusers/{user}', [SuperUserController::class, 'destroy'])->name('cabinet.superuser.destroy');
+
 });
