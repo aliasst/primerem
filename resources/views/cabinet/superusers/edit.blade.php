@@ -6,31 +6,28 @@
 
     <div class="container">
 
-        <div class="row">
+        <div class="row justify-content-center">
 
-            <div class="col-12 mb-4">
 
-            </div>
 
             <div class="col-12">
-                <div class="text-center mb-3">
-
-                    {{--                    {{ Auth::user()->name }} <br>--}}
-
-                    Вы в личном кабинете!
-
-
-                    @if (Route::has('logout'))
-                        <a class="btn-link btn-unlogin" href="{{ route('logout') }}"
-                           onclick="event.preventDefault();
+                <div class="back-log">
+                    <div class="back-link"><a class="btn-link btn-backlink" href="{{ route('cabinet.superuser.index') }}">Назад</a>
+                    </div>
+                    <div class="logout-link">
+                        Вы в личном кабинете!
+                        @if (Route::has('logout'))
+                            <a class="btn-link btn-unlogin" href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
                                                                          document.getElementById('logout-form').submit();">
-                            {{ __('Выйти') }}
-                        </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
+                                {{ __('Выйти') }}
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
 
-                    @endif
+                        @endif
+                    </div>
                 </div>
 
 
@@ -42,7 +39,7 @@
 
 
             </div>
-            <div class="col-12">
+            <div class="col-12 col-md-8">
 
                 <div class="request-card card auth-card">
                     <div class="card-head"> Редактирование суперадмина</div>
@@ -55,7 +52,7 @@
 
 
                             <div class="row mb-3">
-                                <label for="name" class="col-md-4 col-form-label text-md-end">Имя</label>
+                                <label for="name" class="col-md-5 col-form-label text-md-end">Имя</label>
 
                                 <div class="col-md-6">
                                     <input id="name" type="text"
@@ -72,7 +69,7 @@
 
 
                             <div class="row mb-3">
-                                <label for="email" class="col-md-4 col-form-label text-md-end">Email</label>
+                                <label for="email" class="col-md-5 col-form-label text-md-end">Email</label>
 
                                 <div class="col-md-6">
                                     <input id="email" type="email"
@@ -90,7 +87,7 @@
 
 
                             <div class="row mb-3">
-                                <label for="password" class="col-md-4 col-form-label text-md-end">Новый Пароль</label>
+                                <label for="password" class="col-md-5 col-form-label text-md-end">Новый Пароль</label>
 
                                 <div class="col-md-6">
                                     <input id="password" type="password"
@@ -107,7 +104,7 @@
                             </div>
 
                             <div class="row mb-4">
-                                <label for="password-confirm" class="col-md-4 col-form-label text-md-end">Подтверждение
+                                <label for="password-confirm" class="col-md-5 col-form-label text-md-end">Подтверждение
                                     пароля</label>
 
                                 <div class="col-md-6">
@@ -118,7 +115,7 @@
 
 
                             <div class="row mb-2">
-                                <div class="col-md-6 offset-md-4">
+                                <div class="col-md-6 offset-md-5">
                                     <button type="submit" class="orange-btn orange-btn-min">
                                         {{ __('Сохранить') }}
                                             </button>
@@ -128,7 +125,7 @@
                                 </form>
 
                         <div class="row mt-3">
-                            <div class="col-md-6 offset-md-4">
+                            <div class="col-md-6 offset-md-5">
                                 <form action="{{ route('cabinet.superuser.destroy', $user->id) }}" method="POST" onsubmit="return confirm('Вы точно хотите удалить пользователя?');">
                                     @csrf
                                     @method('DELETE')

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Cabinet\DashboardController;
+use App\Http\Controllers\Cabinet\InvoiceController;
 use App\Http\Controllers\Cabinet\ProjectController;
 use App\Http\Controllers\Cabinet\ProjectUserController;
 use App\Http\Controllers\Cabinet\SuperUserController;
@@ -64,7 +65,15 @@ Route::prefix('cabinet')->middleware(['only-auth'])->group(function (){
     Route::get('/superusers/create', [SuperUserController::class, 'create'])->name('cabinet.superuser.create');
     Route::post('/superusers', [SuperUserController::class, 'store'])->name('cabinet.superuser.store');
     Route::get('/superusers/{user}/edit', [SuperUserController::class, 'edit'])->name('cabinet.superuser.edit');
-    Route::put('/superusers/{user}/edit', [SuperUserController::class, 'update'])->name('cabinet.superuser.update');
+    Route::put('/superusers/{user}', [SuperUserController::class, 'update'])->name('cabinet.superuser.update');
     Route::delete('/superusers/{user}', [SuperUserController::class, 'destroy'])->name('cabinet.superuser.destroy');
 
+
+    Route::get('/invoices', [InvoiceController::class, 'index'])->name('cabinet.invoice.index');
+    Route::get('/invoices/create', [InvoiceController::class, 'create'])->name('cabinet.invoice.create');
+    Route::post('/invoices', [InvoiceController::class, 'store'])->name('cabinet.invoice.store');
+    Route::get('/invoices/{invoice}', [InvoiceController::class, 'show'])->name('cabinet.invoice.show');
+    Route::get('/invoices/{invoice}/edit', [InvoiceController::class, 'edit'])->name('cabinet.invoice.edit');
+    Route::put('/invoices/{invoice}', [InvoiceController::class, 'update'])->name('cabinet.invoice.update');
+    Route::delete('/invoices/{invoice}', [InvoiceController::class, 'destroy'])->name('cabinet.invoice.destroy');
 });

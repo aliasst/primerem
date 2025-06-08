@@ -5,32 +5,26 @@
 @section('content')
 
     <div class="container">
-
-        <div class="row">
-
-            <div class="col-12 mb-4">
-
-            </div>
-
+        <div class="row justify-content-center">
             <div class="col-12">
-                <div class="text-center mb-3">
 
-                    {{--                    {{ Auth::user()->name }} <br>--}}
-
-                    Вы в личном кабинете!
-
-
-                    @if (Route::has('logout'))
-                        <a class="btn-link btn-unlogin" href="{{ route('logout') }}"
-                           onclick="event.preventDefault();
+                <div class="back-log">
+                    <div class="back-link"><a class="btn-link btn-backlink" href="{{ route('cabinet.project.index') }}">Назад</a>
+                    </div>
+                    <div class="logout-link">
+                        Вы в личном кабинете!
+                        @if (Route::has('logout'))
+                            <a class="btn-link btn-unlogin" href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
                                                                          document.getElementById('logout-form').submit();">
-                            {{ __('Выйти') }}
-                        </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
+                                {{ __('Выйти') }}
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
 
-                    @endif
+                        @endif
+                    </div>
                 </div>
 
 
@@ -42,7 +36,7 @@
 
 
             </div>
-            <div class="col-12">
+            <div class="col-12 col-md-8">
 
                 <div class="request-card card auth-card">
                     <div class="card-head"> Просмотр и редактирование проекта</div>
@@ -54,7 +48,7 @@
 
 
                             <div class="row mb-3">
-                                <label for="name" class="col-md-4 col-form-label text-md-end">Название проекта</label>
+                                <label for="name" class="col-md-5 col-form-label text-md-end">Название проекта</label>
 
                                 <div class="col-md-6">
                                     <input id="name" type="text"
@@ -71,7 +65,7 @@
 
 
                             <div class="row mb-3">
-                                <label for="organization" class="col-md-4 col-form-label text-md-end">Юр. лицо</label>
+                                <label for="organization" class="col-md-5 col-form-label text-md-end">Юр. лицо</label>
 
                                 <div class="col-md-6">
                                     <input id="organization" type="text"
@@ -89,7 +83,7 @@
 
 
                             <div class="row mb-3">
-                                <label for="email" class="col-md-4 col-form-label text-md-end">Email</label>
+                                <label for="email" class="col-md-5 col-form-label text-md-end">Email</label>
 
                                 <div class="col-md-6">
                                     <input id="email" type="email"
@@ -106,7 +100,7 @@
 
 
                             <div class="row mb-3">
-                                <label for="phone" class="col-md-4 col-form-label text-md-end">Phone</label>
+                                <label for="phone" class="col-md-5 col-form-label text-md-end">Phone</label>
 
                                 <div class="col-md-6">
                                     <input id="phone" type="tel"
@@ -122,7 +116,7 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label for="details" class="col-md-4 col-form-label text-md-end">Реквизиты</label>
+                                <label for="details" class="col-md-5 col-form-label text-md-end">Реквизиты</label>
 
                                 <div class="col-md-6">
                                     <textarea name="details" id="details"
@@ -139,7 +133,7 @@
 
 
                             <div class="row mb-2">
-                                <div class="col-md-6 offset-md-4">
+                                <div class="col-md-6 offset-md-5">
                                     <button type="submit" class="orange-btn orange-btn-min">
                                         {{ __('Сохранить') }}
                                     </button>
@@ -149,7 +143,7 @@
                         </form>
 
                                             <div class="row mt-3">
-                                                <div class="col-md-6 offset-md-4">
+                                                <div class="col-md-6 offset-md-5">
                                                     <form action="{{ route('cabinet.project.destroy', $project->id) }}" method="POST" onsubmit="return confirm('Вы точно хотите удалить проект?');">
                                                         @csrf
                                                         @method('DELETE')

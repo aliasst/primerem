@@ -3,6 +3,23 @@
     $(document).ready(function () {
 
 
+        $(document).on('change', '.fl_inp', function () {
+
+            var filesMainWrap = $(this).parents('.files-main-wrap');
+
+            $(this).parents('.inp-val-wrap').find('.invalid-feedback').removeClass('visible');
+            var filename = $(this).val().replace(/.*\\/, "");
+
+            $(this).parents(".file-form-wrap").find(".file-name").html(filename);
+//$(this).parents('.my-btn').css('backgroundColor', '#008000');
+
+            // filesMainWrap.find('.file-form-wrap').first().clone(true, true).appendTo(filesMainWrap);
+            // filesMainWrap.find('.file-form-wrap').last().find(".file-name").html('');
+            // filesMainWrap.find('.file-form-wrap').last().find(".fl_inp ").val('');
+        });
+
+
+
         function setChecked(target) {
 
             var checked = $(target).find("input[type='checkbox']:checked").closest('label').html();

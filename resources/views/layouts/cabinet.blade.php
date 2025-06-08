@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="/css/reset.css"/>
     <link rel="stylesheet" href="/css/fonts.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
+
     <link rel="stylesheet" href="/css/style.css@php echo '?'.mt_rand()@endphp" />
     <meta property="og:type" content="website"/>
     <meta property="og:url" content=""/>
@@ -16,7 +18,7 @@
     <meta name="description"
           content="Вы получите самый изысканный ремонт, с равными ежемесячными платежами. Без посещения объекта. Весь процесс онлайн, без нервов.">
 </head>
-<body>
+<body class="cabinet-body">
 
 
 @yield('content')

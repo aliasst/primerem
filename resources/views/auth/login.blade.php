@@ -3,16 +3,14 @@
 @section('title', 'Вход в Личный кабинет')
 
 @section('content')
-
-    <section class="main">
         <div class="container">
             <div class="row justify-content-center">
 
                 <div class="col-12">
-               <div class="logo-cell">Prime<span>REM</span></div>
+                    <div class="logo-cell"><a href="/">Prime<span>REM</span></a></div>
                 </div>
 
-                <div class="col-md-10">
+                <div class="col-xs-12 col-md-7">
                     <div class="request-card card auth-card">
                         <div class="card-head ">Вход в личный кабинет</div>
 
@@ -29,9 +27,9 @@
                                 @csrf
 
                                 <div class="row mb-3">
-                                    <label for="email" class="col-md-4 col-form-label text-md-end">Email</label>
+                                    <label for="email" class="col-md-3 col-form-label text-md-end">Email</label>
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-8">
                                         <input id="email" type="email"
                                                class="form-control @error('email') is-invalid @enderror"
                                                name="email"
@@ -46,9 +44,9 @@
                                 </div>
 
                                 <div class="row mb-3">
-                                    <label for="password" class="col-md-4 col-form-label text-md-end">Пароль</label>
+                                    <label for="password" class="col-md-3 col-form-label text-md-end">Пароль</label>
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-8">
                                         <input id="password" type="password"
                                                class="form-control @error('password') is-invalid @enderror"
                                                name="password" required autocomplete="current-password">
@@ -63,9 +61,9 @@
 
 
                                 <div class="row mb-3">
-                                    <div class="col-md-4"></div>
+                                    <div class="col-md-3"></div>
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-8">
                                         <button type="submit" class="orange-btn orange-btn-min">
                                             {{ __('Войти') }}
                                         </button>
@@ -74,9 +72,9 @@
 
 
                                 <div class="row mb-3">
-                                    <div class="col-md-4"></div>
+                                    <div class="col-md-3"></div>
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-8">
                                         @if (Route::has('register'))
                                             <div class="register-link">
                                                 Нет аккаунта?
@@ -95,5 +93,5 @@
                 </div>
             </div>
         </div>
-    </section>
+
 @endsection

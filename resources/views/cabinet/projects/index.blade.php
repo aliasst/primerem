@@ -6,30 +6,25 @@
 
     <div class="container">
         <div class="row">
-
-            <div class="col-12 mb-4">
-
-            </div>
-
             <div class="col-12">
-                <div class="text-center mb-3">
 
-                    {{--                    {{ Auth::user()->name }} <br>--}}
-
-                    Вы в личном кабинете!
-
-
-                    @if (Route::has('logout'))
-                        <a class="btn-link btn-unlogin" href="{{ route('logout') }}"
-                           onclick="event.preventDefault();
+                <div class="back-log">
+                    <div class="back-link"><a class="btn-link btn-backlink" href="{{ route('cabinet.dashboard') }}">Назад</a>
+                    </div>
+                    <div class="logout-link">
+                        Вы в личном кабинете!
+                        @if (Route::has('logout'))
+                            <a class="btn-link btn-unlogin" href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
                                                                          document.getElementById('logout-form').submit();">
-                            {{ __('Выйти') }}
-                        </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
+                                {{ __('Выйти') }}
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
 
-                    @endif
+                        @endif
+                    </div>
                 </div>
 
 
@@ -39,14 +34,16 @@
                 </div>
 
                 @include('flash-messages')
+
             </div>
             <div class="col-12">
+
                 <div class="request-list-wrap request-list-wrap_1 mb-5">
 
 
                     @if(empty($projects->count()))
 
-                        {{--                            <h3 class="text-center mt-4">Заявок нет</h3>--}}
+                        <h3 class="text-center mt-4">Проектов нет</h3>
                     @else
 
                         <table class="requests">
