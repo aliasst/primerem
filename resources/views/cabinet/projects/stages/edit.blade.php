@@ -1,6 +1,6 @@
 @extends('layouts.cabinet')
 
-@section('title', 'Редактирование счета')
+@section('title', 'Редактирование этапа')
 
 @section('content')
 
@@ -11,7 +11,7 @@
 
             <div class="col-12">
                 <div class="back-log">
-                    <div class="back-link"><a class="btn-link btn-backlink" href="{{ route('cabinet.invoice.index') }}">Назад</a>
+                    <div class="back-link"><a class="btn-link btn-backlink" href="{{ route('cabinet.project.stage.index',  [$project->id]) }}">Назад</a>
                     </div>
                     <div class="logout-link">
                         Вы в личном кабинете!
@@ -41,26 +41,26 @@
             <div class="col-12 col-md-8">
 
                 <div class="request-card card auth-card">
-                    <div class="card-head"> Редактирование счета</div>
+                    <div class="card-head"> Редактирование этапа</div>
 
                     <div class="card-content">
                         <form method="post"
-                              action="{{ route('cabinet.invoice.update', $invoice->id) }}"
+                              action="{{ route('cabinet.project.stage.update',  [$project->id, $stage->id]) }}"
                               enctype="multipart/form-data">
                             @method('put')
                             @csrf
 
 
                             <div class="row mb-3">
-                                <label for="name" class="col-md-4 col-form-label text-md-end">Номер счета</label>
+                                <label for="name" class="col-md-4 col-form-label text-md-end">Название этапа</label>
 
                                 <div class="col-md-6">
-                                    <input id="invoice_number" type="text"
-                                           class="form-control @error('invoice_number') is-invalid @enderror"
-                                           name="invoice_number"
-                                           value="{{ old('invoice_number') ?? $invoice->invoice_number }}">
+                                    <input id="title" type="text"
+                                           class="form-control @error('title') is-invalid @enderror"
+                                           name="title"
+                                           value="{{ old('title') ?? $stage->title }}">
 
-                                    @error('invoice_number')
+                                    @error('title')
                                     <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -74,15 +74,25 @@
                                 <label for="status" class="col-md-4 col-form-label text-md-end">Статус</label>
                                 <div class="col-md-6">
                                     <div class="form-item checkselect checkselect-js checkselect-border onecheck">
-                                        <label @if($invoice->status == 'status_1') class="js-active" @endif><input
+                                        <label @if($stage->status == 'status_0') class="js-active" @endif><input
+                                                style="display:none;" type="checkbox"
+                                                name="status" value="status_0"
+                                                @if($stage->status == 'status_0') checked @endif >{{ \App\Models\Stage::$statuses['status_0'] }}
+                                        </label>
+                                        <label @if($stage->status == 'status_1') class="js-active" @endif><input
                                                 style="display:none;" type="checkbox"
                                                 name="status" value="status_1"
-                                                @if($invoice->status == 'status_1') checked @endif >{{ \App\Models\Invoice::$statuses['status_1'] }}
+                                                @if($stage->status == 'status_1') checked @endif >{{ \App\Models\Stage::$statuses['status_1'] }}
                                         </label>
-                                        <label @if($invoice->status == 'status_2') class="js-active" @endif><input
+                                        <label @if($stage->status == 'status_2') class="js-active" @endif><input
                                                 style="display:none;" type="checkbox"
                                                 name="status" value="status_2"
-                                                @if($invoice->status == 'status_2') checked @endif >{{ \App\Models\Invoice::$statuses['status_2'] }}
+                                                @if($stage->status == 'status_2') checked @endif >{{ \App\Models\Stage::$statuses['status_2'] }}
+                                        </label>
+                                        <label @if($stage->status == 'status_3') class="js-active" @endif><input
+                                                style="display:none;" type="checkbox"
+                                                name="status" value="status_3"
+                                                @if($stage->status == 'status_3') checked @endif >{{ \App\Models\Stage::$statuses['status_3'] }}
                                         </label>
 
 
@@ -92,60 +102,52 @@
                             </div>
 
 
+
                             <div class="row mb-3">
-                                <label for="status" class="col-md-4 col-form-label text-md-end">Счет</label>
+                                <label for="start_date" class="col-md-4 col-form-label text-md-end">Дата старта</label>
 
                                 <div class="col-md-6">
-                                    @if(!$files->isEmpty())
-                                        <div class="uploaded-files">
-{{--                                            <div class="uploaded-files-label">Ранее загруженный счет:</div>--}}
-                                            <div class="uploaded-files-inner-wrap">
-                                                @foreach($files as $file)
-                                                    <div class="uploaded-file" id="{{$file->id}}">
-                                                        <a style="text-decoration: underline" target="_blank"
-                                                           href="{{ Storage::disk('public')->url($file->storage_path) }}">{{$file->name}}</a>
-                                                    </div>
 
-                                                @endforeach
-                                            </div>
+                                    <input id="start_date"  type="text"
+                                           class="datepicker form-control date-input @error('start_date') is-invalid @enderror"
+                                           name="start_date"
+                                                                                  value="{{  $stage->start_date ? $stage->start_date->format('d.m.Y') : '' }}"
 
-                                        </div>
-                                    @endif
+                                    >
 
-                                    @error('file-invoice')
+
+                                    @error('start_date')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                                <strong>{{ $message }}</strong>
+                                            </span>
                                     @enderror
                                 </div>
                             </div>
 
 
                             <div class="row mb-3">
-                                <div class="col-md-4"></div>
-                                {{--                                <label for="invoice_number" class="col-md-4 col-form-label text-md-end">Документ</label>--}}
+                                <label for="finish_date" class="col-md-4 col-form-label text-md-end">Дата завершения</label>
 
                                 <div class="col-md-6">
-                                    <div class="files-main-wrap">
-                                        <div class="file-form-wrap">
 
-                                            <div class="file-upload my-btn">
-                                                <label>
-                                                    <input class="fl_inp " type="file" name="file-invoice">
-                                                    <span>Добавить файл для замены</span>
-                                                </label>
-                                            </div>
-                                            <div class="file-name"></div>
-                                        </div>
-                                    </div>
+                                    <input id="finish_date"  type="text"
+                                           class="datepicker form-control date-input @error('finish_date') is-invalid @enderror"
+                                           name="finish_date"
+                                           value="{{  $stage->finish_date ? $stage->finish_date->format('d.m.Y') : '' }}"
 
-                                    @error('file-invoice')
+                                    >
+
+
+                                    @error('finish_date')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                                <strong>{{ $message }}</strong>
+                                            </span>
                                     @enderror
                                 </div>
                             </div>
+
+
+
 
 
                             <div class="row mb-2">
@@ -160,11 +162,11 @@
 
                         <div class="row mt-3">
                             <div class="col-md-6 offset-md-4">
-                                <form action="{{ route('cabinet.invoice.destroy', $invoice->id) }}" method="POST"
-                                      onsubmit="return confirm('Вы точно хотите удалить счет?');">
+                                <form action="{{ route('cabinet.project.stage.destroy',  [$project->id, $stage->id]) }}" method="POST"
+                                      onsubmit="return confirm('Вы точно хотите удалить этот этап?');">
                                     @csrf
                                     @method('DELETE')
-                                    <button class="btn-link" type="submit" onclick="">Удалить счет</button>
+                                    <button class="btn-link" type="submit" onclick="">Удалить этап</button>
                                 </form>
 
                             </div>

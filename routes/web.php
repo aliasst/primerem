@@ -1,12 +1,17 @@
 <?php
 
 use App\Http\Controllers\Cabinet\DashboardController;
-use App\Http\Controllers\Cabinet\InvoiceController;
+use App\Http\Controllers\Cabinet\ProjectInvoiceController;
 use App\Http\Controllers\Cabinet\ProjectController;
+use App\Http\Controllers\Cabinet\ProjectStageController;
 use App\Http\Controllers\Cabinet\ProjectUserController;
 use App\Http\Controllers\Cabinet\SuperUserController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
+
+Route::get('/test', [\App\Http\Controllers\Cabinet\ProjectStageController::class, 'test']);
+
+
 
 Route::get('/', HomeController::class)->name('home');
 
@@ -69,11 +74,22 @@ Route::prefix('cabinet')->middleware(['only-auth'])->group(function (){
     Route::delete('/superusers/{user}', [SuperUserController::class, 'destroy'])->name('cabinet.superuser.destroy');
 
 
-    Route::get('/invoices', [InvoiceController::class, 'index'])->name('cabinet.invoice.index');
-    Route::get('/invoices/create', [InvoiceController::class, 'create'])->name('cabinet.invoice.create');
-    Route::post('/invoices', [InvoiceController::class, 'store'])->name('cabinet.invoice.store');
-    Route::get('/invoices/{invoice}', [InvoiceController::class, 'show'])->name('cabinet.invoice.show');
-    Route::get('/invoices/{invoice}/edit', [InvoiceController::class, 'edit'])->name('cabinet.invoice.edit');
-    Route::put('/invoices/{invoice}', [InvoiceController::class, 'update'])->name('cabinet.invoice.update');
-    Route::delete('/invoices/{invoice}', [InvoiceController::class, 'destroy'])->name('cabinet.invoice.destroy');
+    Route::get('/projects/{project}/invoices', [ProjectInvoiceController::class, 'index'])->name('cabinet.project.invoice.index');
+    Route::get('/projects/{project}/invoices/create', [ProjectInvoiceController::class, 'create'])->name('cabinet.project.invoice.create');
+    Route::post('/projects/{project}/invoices', [ProjectInvoiceController::class, 'store'])->name('cabinet.project.invoice.store');
+    Route::get('/projects/{project}/invoices/{invoice}', [ProjectInvoiceController::class, 'show'])->name('cabinet.project.invoice.show');
+    Route::get('/projects/{project}/invoices/{invoice}/edit', [ProjectInvoiceController::class, 'edit'])->name('cabinet.project.invoice.edit');
+    Route::put('/projects/{project}/invoices/{invoice}', [ProjectInvoiceController::class, 'update'])->name('cabinet.project.invoice.update');
+    Route::delete('/projects/{project}/invoices/{invoice}', [ProjectInvoiceController::class, 'destroy'])->name('cabinet.project.invoice.destroy');
+
+
+    Route::get('/projects/{project}/stages', [ProjectStageController::class, 'index'])->name('cabinet.project.stage.index');
+    Route::get('/projects/{project}/stages/create', [ProjectStageController::class, 'create'])->name('cabinet.project.stage.create');
+    Route::post('/projects/{project}/stages', [ProjectStageController::class, 'store'])->name('cabinet.project.stage.store');
+    Route::get('/projects/{project}/stages/{stage}', [ProjectStageController::class, 'show'])->name('cabinet.project.stage.show');
+    Route::get('/projects/{project}/stages/{stage}/edit', [ProjectStageController::class, 'edit'])->name('cabinet.project.stage.edit');
+    Route::put('/projects/{project}/stages/{stage}', [ProjectStageController::class, 'update'])->name('cabinet.project.stage.update');
+    Route::delete('/projects/{project}/stages/{stage}', [ProjectStageController::class, 'destroy'])->name('cabinet.project.stage.destroy');
+
+
 });

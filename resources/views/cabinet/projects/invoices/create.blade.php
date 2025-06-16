@@ -10,7 +10,7 @@
 
             <div class="col-12">
                 <div class="back-log">
-                    <div class="back-link"><a class="btn-link btn-backlink" href="{{ route('cabinet.invoice.index') }}">Назад</a>
+                    <div class="back-link"><a class="btn-link btn-backlink" href="{{ route('cabinet.project.invoice.index',  [$project->id]) }}">Назад</a>
                     </div>
                     <div class="logout-link">
                         Вы в личном кабинете!
@@ -43,7 +43,7 @@
                     <div class="card-head"> Новый счет</div>
 
                     <div class="card-content">
-                        <form method="post" action="{{ route('cabinet.invoice.store') }}" enctype="multipart/form-data">
+                        <form method="post" action="{{ route('cabinet.project.invoice.store',  [$project->id]) }}" enctype="multipart/form-data">
 
                             @csrf
 
@@ -88,7 +88,7 @@
 
 
                             <div class="row mb-3">
-                                <label for="invoice_number" class="col-md-4 col-form-label text-md-end">Документ</label>
+                                <label for="invoice_number" class="col-md-4 col-form-label text-md-end"></label>
 
                                 <div class="col-md-6">
                                     <div class="files-main-wrap">

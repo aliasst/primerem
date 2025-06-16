@@ -3,6 +3,12 @@
     $(document).ready(function () {
 
 
+            $.datepicker.setDefaults( $.datepicker.regional[ "ru" ] );
+            $( "#datepicker1" ).datepicker();
+            $( ".datepicker" ).datepicker();
+
+
+
         $(document).on('change', '.fl_inp', function () {
 
             var filesMainWrap = $(this).parents('.files-main-wrap');

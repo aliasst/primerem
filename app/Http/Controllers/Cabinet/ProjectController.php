@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Cabinet;
 
 use App\Http\Controllers\Controller;
 use App\Models\Project;
+use App\Models\Stage;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -13,9 +14,9 @@ class ProjectController extends Controller
      */
     public function index()
     {
-            $projects = Project::all();
+        $projects = Project::all();
 
-            return view('cabinet.projects.index', compact('projects'));
+        return view('cabinet.projects.index', compact('projects'));
     }
 
     /**
@@ -35,16 +36,19 @@ class ProjectController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'organization' => ['required', 'string', 'max:255', 'nullable'],
             'email' => ['string', 'email', 'max:255', 'nullable'],
-            'phone' => ['string','max:255', 'nullable'],
+            'phone' => ['string', 'max:255', 'nullable'],
             'details' => ['string', 'nullable'],
         ]);
 
         $validated['user_id'] = auth()->user()->id;
 
 
-        $status = Project::create($validated);
+        $project = Project::create($validated);
 
-        if ($status) {
+        if ($project) {
+
+            Stage::makeStagesFromSample($project);
+
             request()->session()->flash('success', 'Проект добавлен!');
 
         } else {
@@ -59,7 +63,10 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        //
+
+
+        return view('cabinet.projects.show', compact('project',));
+
     }
 
     /**
@@ -79,7 +86,7 @@ class ProjectController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'organization' => ['required', 'string', 'max:255', 'nullable'],
             'email' => ['string', 'email', 'max:255', 'nullable'],
-            'phone' => ['string','max:255', 'nullable'],
+            'phone' => ['string', 'max:255', 'nullable'],
             'details' => ['string', 'nullable'],
         ]);
 

@@ -1420,13 +1420,36 @@ table.requests thead tr {
     background-color: transparent!important;
 }
 
-table.requests tr:nth-child(odd) {
+/*table.requests tr:nth-child(odd) {*/
+/*    background-color: rgb(243, 244, 243);*/
+/*}*/
+
+/*table.requests tr:nth-child(even) {*/
+/*    background-color: rgb(243, 244, 243);*/
+/*}*/
+
+table.requests tr {
     background-color: rgb(243, 244, 243);
 }
 
-table.requests tr:nth-child(even) {
+table.requests tr.status_1 {
+    background-color: yellow;
+}
+
+table.requests tr.status_2 {
     background-color: rgb(243, 244, 243);
 }
+
+table.requests tr.status_3 {
+    background-color: green;
+}
+
+table.requests a {
+   text-decoration: none;
+}
+
+
+
 
 table.requests td:first-child {
     border-left-style: solid;

@@ -48,17 +48,17 @@
             </div>
             @endif
 
-            <div class="col-12 ">
-                <div class="cabinet-menu" id="cabinet-menu">
-                    <a href="{{route('cabinet.invoice.index')}}" class="btn orange-btn orange-btn-min" role="button">Счета</a>
-                    <a href="" class="btn orange-btn orange-btn-min" role="button">Акты</a>
-                    <a href="" class="btn orange-btn orange-btn-min" role="button">Этапы</a>
-                    <a href="" class="btn orange-btn orange-btn-min" role="button">Отчеты</a>
-                    <a href="" class="btn orange-btn orange-btn-min" role="button">Подрядчики</a>
-                    <a href="" class="btn orange-btn orange-btn-min" role="button">Закупки</a>
+{{--            <div class="col-12 ">--}}
+{{--                <div class="cabinet-menu" id="cabinet-menu">--}}
+{{--                    <a href="" class="btn orange-btn orange-btn-min" role="button">Счета</a>--}}
+{{--                    <a href="" class="btn orange-btn orange-btn-min" role="button">Акты</a>--}}
+{{--                    <a href="" class="btn orange-btn orange-btn-min" role="button">Этапы</a>--}}
+{{--                    <a href="" class="btn orange-btn orange-btn-min" role="button">Отчеты</a>--}}
+{{--                    <a href="" class="btn orange-btn orange-btn-min" role="button">Подрядчики</a>--}}
+{{--                    <a href="" class="btn orange-btn orange-btn-min" role="button">Закупки</a>--}}
 
-                </div>
-            </div>
+{{--                </div>--}}
+{{--            </div>--}}
         </div>
     </div>
 

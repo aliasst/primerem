@@ -12,7 +12,7 @@
 
             <div class="col-12">
                 <div class="back-log">
-                    <div class="back-link"><a class="btn-link btn-backlink" href="{{ route('cabinet.dashboard') }}">Назад</a>
+                    <div class="back-link"><a class="btn-link btn-backlink" href="{{route('cabinet.project.show', $project->id)}}">Назад</a>
                     </div>
                     <div class="logout-link">
                         Вы в личном кабинете!
@@ -63,7 +63,7 @@
 
                                 <tr class="">
                                     <td aria-label="Номер счета"><a style="white-space: nowrap" class="btn-link"
-                                                                        href="{{route ('cabinet.invoice.edit', $invoice->id)}}">{{ $invoice->invoice_number}}</a>
+                                                                        href="{{route ('cabinet.project.invoice.edit', [$project->id, $invoice->id])}}">{{ $invoice->invoice_number}}</a>
                                     </td>
                                     <td aria-label="Дата создания">{{ $invoice->created_at->format('d.m.Y') }}</td>
                                     <td aria-label="Статус">
@@ -81,8 +81,8 @@
 
                                     <td aria-label="Действия">
 
-                                        <a href="{{route ('cabinet.invoice.show', $invoice->id)}}"><i class="fa fa-eye" aria-hidden="true"></i></a>
-                                        <a href="{{route ('cabinet.invoice.edit', $invoice->id)}}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                        <a href="{{route ('cabinet.project.invoice.show',  [$project->id, $invoice->id])}}"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                        <a href="{{route ('cabinet.project.invoice.edit',  [$project->id, $invoice->id])}}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                                     </td>
 
 
@@ -100,7 +100,7 @@
 
 
                 <div class="text-center">
-                    <a href="{{route('cabinet.invoice.create')}}"
+                    <a href="{{route('cabinet.project.invoice.create',  [$project->id])}}"
                        class="btn orange-btn orange-btn-min orange-btn-center">
                         Добавить счет
                     </a>

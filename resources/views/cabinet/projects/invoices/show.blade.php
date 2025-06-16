@@ -11,7 +11,7 @@
 
             <div class="col-12">
                 <div class="back-log">
-                    <div class="back-link"><a class="btn-link btn-backlink" href="{{ route('cabinet.invoice.index') }}">Назад</a>
+                    <div class="back-link"><a class="btn-link btn-backlink" href="{{ route('cabinet.project.invoice.index',  [$project->id]) }}">Назад</a>
                     </div>
                     <div class="logout-link">
                         Вы в личном кабинете!

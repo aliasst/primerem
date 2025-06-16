@@ -53,6 +53,7 @@
                                 <th>Дата создания</th>
                                 <th>Активность</th>
                                 <th>Пользователи</th>
+                                <th>Действия</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -61,13 +62,18 @@
 
                                 <tr class="">
                                     <td aria-label="Название или id"><a style="white-space: nowrap" class="btn-link"
-                                                                        href="{{route ('cabinet.project.edit', $project->id)}}">{{ $project->name  ??  $project->id}}</a>
+                                                                        href="{{route ('cabinet.project.show', $project->id)}}">{{ $project->name  ??  $project->id}}</a>
                                     </td>
                                     <td aria-label="Дата создания">{{ $project->created_at->format('d.m.Y') }}</td>
                                     <td aria-label="Активность">{{ \App\Models\Project::$statuses[$project->status]  }}</td>
                                     <td aria-label="Пользователи">
                                         <a class="btn-link"
                                            href="{{route ('cabinet.project.user.index', $project->id)}}">Смотреть</a>
+                                    </td>
+                                    <td aria-label="Действия">
+
+                                        <a href="{{route ('cabinet.project.show', $project->id)}}"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                        <a href="{{route ('cabinet.project.edit', $project->id)}}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                                     </td>
 
 
