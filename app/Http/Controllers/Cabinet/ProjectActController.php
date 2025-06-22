@@ -3,21 +3,21 @@
 namespace App\Http\Controllers\Cabinet;
 
 use App\Http\Controllers\Controller;
-use App\Models\Invoice;
-use App\Models\InvoiceFile;
+use App\Models\Act;
+use App\Models\ActFile;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class ProjectInvoiceController extends Controller
+class ProjectActController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index(Project $project)
     {
-        $invoices = Invoice::where('project_id', $project->id)->with('files')->get();
-        return view('cabinet.projects.invoices.index', compact( 'invoices', 'project'));
+        $acts = Act::where('project_id', $project->id)->with('files')->get();
+        return view('cabinet.projects.acts.index', compact( 'acts', 'project'));
     }
 
     /**
@@ -25,7 +25,7 @@ class ProjectInvoiceController extends Controller
      */
     public function create(Project $project)
     {
-        return view('cabinet.projects.invoices.create', compact('project'));
+        return view('cabinet.projects.acts.create', compact('project'));
     }
 
     /**
@@ -34,9 +34,9 @@ class ProjectInvoiceController extends Controller
     public function store(Request $request, Project $project)
     {
         $validated = $request->validate([
-            'invoice_number' => ['required', 'string', 'max:255', 'nullable'],
+            'act_number' => ['required', 'string', 'max:255', 'nullable'],
             'status' => ['required', 'string'],
-            'file-invoice' => ['mimes:pdf', 'max:2048', 'nullable'],
+            'file-act' => ['mimes:pdf', 'max:2048', 'nullable'],
         ]);
 
 
@@ -46,23 +46,23 @@ class ProjectInvoiceController extends Controller
 
 //        dd( $validated);
 
-        $status = Invoice::create($validated);
+        $status = Act::create($validated);
 
         if ($status) {
-            $invoice_id = $status->id;
+            $act_id = $status->id;
 
-            if ($request->hasfile('file-invoice')) {
-                $file = $request->file('file-invoice');
+            if ($request->hasfile('file-act')) {
+                $file = $request->file('file-act');
                     $name = $file->getClientOriginalName();
                     $mimeType = $file->getClientMimeType();
                     $extension = $file->getClientOriginalExtension();
                     $nameTrimmed = str_replace(' ', '', $name);
 //                    $path = '/uploads/orders/' . $order . '/';
-                    $path = '/projects/' . $project->id . '/invoices/' . $invoice_id . '/';
+                    $path = '/projects/' . $project->id . '/acts/' . $act_id . '/';
 //                    $file->move(public_path() . $path, $nameTrimmed);
                     Storage::disk('public')->put($path . $nameTrimmed, $file->getContent());
-                    $image = new InvoiceFile();
-                    $image->invoice_id = $invoice_id;
+                    $image = new ActFile();
+                    $image->act_id = $act_id;
                     $image->user_id = $validated['user_id'];
                     $image->project_id = $project->id;
                     $image->name = $name;
@@ -77,62 +77,62 @@ class ProjectInvoiceController extends Controller
 
 
         if($status) {
-            request()->session()->flash('success', 'Cчет добавлен!');
+            request()->session()->flash('success', 'Акт добавлен!');
         } else {
             request()->session()->flash('error', 'Ошибка!!!');
         }
 
-        return redirect()->route('cabinet.project.invoice.index', $project->id);
+        return redirect()->route('cabinet.project.act.index', $project->id);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Project $project, Invoice $invoice)
+    public function show(Project $project, Act $act)
     {
-        $files = $invoice->files()->get();
+        $files = $act->files()->get();
 
 
-        return view('cabinet.projects.invoices.show', compact('invoice', 'files', 'project' ));
+        return view('cabinet.projects.acts.show', compact('act', 'files', 'project' ));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Project $project, Invoice $invoice)
+    public function edit(Project $project, Act $act)
     {
-        $files = $invoice->files()->get();
+        $files = $act->files()->get();
 
 
-        return view('cabinet.projects.invoices.edit', compact('invoice', 'files', 'project' ));
+        return view('cabinet.projects.acts.edit', compact('act', 'files', 'project' ));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Project $project, Invoice $invoice)
+    public function update(Request $request, Project $project, Act $act)
     {
         $validated = $request->validate([
-            'invoice_number' => ['required', 'string', 'max:255', 'nullable'],
+            'act_number' => ['required', 'string', 'max:255', 'nullable'],
             'status' => ['required', 'string'],
-            'file-invoice' => ['mimes:pdf', 'max:2048', 'nullable'],
+            'file-act' => ['mimes:pdf', 'max:2048', 'nullable'],
         ]);
 
         $validated['user_id'] = auth()->user()->id;
         $validated['project_id'] = $project->id;
 
-        $invoice->update($validated);
+        $act->update($validated);
 
 
-        if ($request->hasfile('file-invoice')) {
-            $file = $request->file('file-invoice');
+        if ($request->hasfile('file-act')) {
+            $file = $request->file('file-act');
 
             $name = $file->getClientOriginalName();
             $nameTrimmed = str_replace(' ', '', $name);
-            $path = '/projects/' . $project->id . '/invoices/' . $invoice->id . '/';
+            $path = '/projects/' . $project->id . '/acts/' . $act->id . '/';
 
             $file_data = [
-                'invoice_id' => $invoice->id,
+                'act_id' => $act->id,
                 'user_id' => $validated['user_id'],
                 'project_id' => $project->id,
                 'name' => $name,
@@ -144,8 +144,8 @@ class ProjectInvoiceController extends Controller
 
             Storage::disk('public')->put($path . $nameTrimmed, $file->getContent());
 
-            $file = InvoiceFile::updateOrCreate([
-                'invoice_id' => $invoice->id
+            $file = ActFile::updateOrCreate([
+                'act_id' => $act->id
             ], $file_data);
 
         }
@@ -160,17 +160,17 @@ class ProjectInvoiceController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Project $project, Invoice $invoice)
+    public function destroy(Project $project, Act $act)
     {
-        $status = $invoice->delete();
+        $status = $act->delete();
 
         if ($status) {
-            request()->session()->flash('success', 'Счет удален!');
+            request()->session()->flash('success', 'Акт удален!');
 
         } else {
             request()->session()->flash('error', 'Ошибка!!!');
         }
 
-        return redirect()->route('cabinet.project.invoice.index', $project->id);
+        return redirect()->route('cabinet.project.act.index', $project->id);
     }
 }

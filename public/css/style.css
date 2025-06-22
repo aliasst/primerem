@@ -451,8 +451,16 @@ header {
     margin-bottom: 40px;
 }
 
+
+
 .logo-cell a{
     text-decoration: none;
+}
+
+.progress-cell {
+    font-size: 26px;
+    margin-bottom: 20px;
+    margin-top: -20px;
 }
 
 .header-menu-item ul {
@@ -1404,13 +1412,24 @@ table.requests th {
 }
 
 table.requests td {
-    padding: 0.8rem 1.2rem;
+    padding: 0.9rem 1.3rem;
     color: rgb(0, 0, 0);
     font-size: 14px;
     font-weight: 400;
     line-height: 18px;
     text-align: left;
 }
+
+table.requests td:first-child {
+    font-size: 16px;
+}
+
+
+table.requests .parent-tr td:first-child {
+    font-size:17px;
+    font-weight: bold;
+}
+
 
 table.requests tr.td-danger td {
     color: red;
@@ -1433,15 +1452,15 @@ table.requests tr {
 }
 
 table.requests tr.status_1 {
-    background-color: yellow;
+    background-color: #d9d9d9;
 }
 
 table.requests tr.status_2 {
-    background-color: rgb(243, 244, 243);
+    background-color: #ffff7a;
 }
 
 table.requests tr.status_3 {
-    background-color: green;
+    background-color: #90ee90;
 }
 
 table.requests a {
@@ -1462,6 +1481,8 @@ table.requests td:last-child {
     border-bottom-right-radius: 100px;
     border-top-right-radius: 100px;
 }
+
+
 
 .checkselect {
     position: relative;
@@ -1859,6 +1880,8 @@ table.requests td:last-child {
         font-size: 40px;
         margin-bottom: 30px;
     }
+
+
 
     .cabinet-menu .btn {
         margin-bottom: 15px;

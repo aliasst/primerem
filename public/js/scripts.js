@@ -25,6 +25,17 @@
         });
 
 
+        $(document).on('change', '.fl_inp_multi', function () {
+
+            var filesMainWrap = $(this).parents('.files-main-wrap');
+
+
+            filesMainWrap.find('.file-form-wrap').first().clone(true, true).appendTo(filesMainWrap);
+            filesMainWrap.find('.file-form-wrap').last().find(".file-name").html('');
+            filesMainWrap.find('.file-form-wrap').last().find(".fl_inp ").val('');
+        });
+
+
 
         function setChecked(target) {
 

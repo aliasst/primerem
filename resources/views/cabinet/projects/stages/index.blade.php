@@ -33,6 +33,7 @@
 
                 <div class="py-5 text-center">
                     <div class="logo-cell">Prime<span>REM</span></div>
+                    <div class="progress-cell">Статус Ремонта: {{$project->progress}}%</div>
                     <h2>Этапы проекта {{$project->name}}</h2>
                 </div>
 
@@ -47,7 +48,7 @@
                        <h3 class="text-center mt-4">Этапов нет</h3>
                     @else
 
-                        <table class="requests">
+                        <table class="requests st-table">
                             <thead>
                             <tr>
                                 <th>Название этапа</th>
@@ -61,9 +62,9 @@
 
                             @foreach($stages as  $stage)
 
-                                <tr class="">
-                                    <td aria-label="Название этапа"><a style="white-space: nowrap" class="btn-link"
-                                                                        href="{{route ('cabinet.project.stage.edit', [$project->id, $stage->id])}}">{{ $stage->title}}</a>
+                                <tr class="parent-tr {{$stage->status}}">
+                                    <td aria-label="Название этапа"> <a style="white-space: nowrap" class="btn-link"
+                                                                        href="{{route ('cabinet.project.stage.edit', [$project->id, $stage->id])}}">{{ $loop->iteration }}. {{ $stage->title}}</a>
                                     </td>
                                     <td aria-label="Дата старта">{{ $stage->start_date ? $stage->start_date->format('d.m.Y') : ''}}</td>
                                     <td aria-label="Дата завершения">{{ $stage->finish_date ? $stage->finish_date->format('d.m.Y') : ''}}</td>
@@ -86,7 +87,7 @@
 
                                 @foreach($stage->child_stages as  $child_stage)
 
-                                    <tr class="{{$child_stage->status}}" >
+                                    <tr class="child-tr {{$child_stage->status}}" >
                                         <td style="padding-left:50px;" aria-label="Название этапа" > <a style="white-space: nowrap" class="btn-link"
                                                                            href="{{route ('cabinet.project.stage.edit', [$project->id, $child_stage->id])}}">- {{ $child_stage->title}}</a>
                                         </td>

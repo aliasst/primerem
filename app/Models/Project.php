@@ -21,6 +21,9 @@ class Project extends Model
         'phone',
         'email',
         'details',
+        'progress',
     ];
+
+
 
 }

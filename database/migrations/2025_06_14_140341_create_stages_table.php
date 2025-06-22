@@ -20,6 +20,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id')->constrained('users');
             $table->string('start_date')->nullable();
             $table->string('finish_date')->nullable();
+            $table->text('comments')->nullable();
             $table->string('status')->nullable()->default('status_0');
             $table->string('status_0')->nullable()->default(null);
             $table->string('status_1')->nullable()->default(null);

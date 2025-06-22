@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Cabinet\DashboardController;
+use App\Http\Controllers\Cabinet\ProjectActController;
 use App\Http\Controllers\Cabinet\ProjectInvoiceController;
 use App\Http\Controllers\Cabinet\ProjectController;
 use App\Http\Controllers\Cabinet\ProjectStageController;
@@ -82,6 +83,13 @@ Route::prefix('cabinet')->middleware(['only-auth'])->group(function (){
     Route::put('/projects/{project}/invoices/{invoice}', [ProjectInvoiceController::class, 'update'])->name('cabinet.project.invoice.update');
     Route::delete('/projects/{project}/invoices/{invoice}', [ProjectInvoiceController::class, 'destroy'])->name('cabinet.project.invoice.destroy');
 
+    Route::get('/projects/{project}/acts', [ProjectActController::class, 'index'])->name('cabinet.project.act.index');
+    Route::get('/projects/{project}/acts/create', [ProjectActController::class, 'create'])->name('cabinet.project.act.create');
+    Route::post('/projects/{project}/acts', [ProjectActController::class, 'store'])->name('cabinet.project.act.store');
+    Route::get('/projects/{project}/acts/{act}', [ProjectActController::class, 'show'])->name('cabinet.project.act.show');
+    Route::get('/projects/{project}/acts/{act}/edit', [ProjectActController::class, 'edit'])->name('cabinet.project.act.edit');
+    Route::put('/projects/{project}/acts/{act}', [ProjectActController::class, 'update'])->name('cabinet.project.act.update');
+    Route::delete('/projects/{project}/acts/{act}', [ProjectActController::class, 'destroy'])->name('cabinet.project.act.destroy');
 
     Route::get('/projects/{project}/stages', [ProjectStageController::class, 'index'])->name('cabinet.project.stage.index');
     Route::get('/projects/{project}/stages/create', [ProjectStageController::class, 'create'])->name('cabinet.project.stage.create');

@@ -165,6 +165,6 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('11111111'),
         ]);
 
-        Project::factory(2)->create();
+//        Project::factory(2)->create();
     }
 }

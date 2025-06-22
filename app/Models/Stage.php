@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Stage extends Model
 {
@@ -14,6 +15,7 @@ class Stage extends Model
         'project_id',
         'start_date',
         'finish_date',
+        'comments',
         'status',
         'status_1',
         'status_2',
@@ -22,8 +24,8 @@ class Stage extends Model
 
     public static  $statuses = [
         'status_0' => '---',
-        'status_1' => 'В работе',
-        'status_2' => 'Планируется',
+        'status_1' => 'Планируется',
+        'status_2' => 'В работе',
         'status_3' => 'Завершен',
     ];
 
@@ -31,6 +33,18 @@ class Stage extends Model
     public function child_stages()
     {
         return $this->hasMany(Stage::class);
+    }
+
+    public function files(): HasMany
+    {
+        return $this->hasMany(StageFile::class);
+    }
+
+    public static function calcProgress (int $projectId) {
+        $stagesCount = self::where('project_id', $projectId)->count();
+        $stagesCountCompleted = self::where(['project_id' => $projectId, 'status' => 'status_3'])->count();
+        $progress = ($stagesCountCompleted / $stagesCount) * 100;
+        return $progress;
     }
 
 
@@ -50,7 +64,7 @@ class Stage extends Model
                 'stage_id' => null,
                 'user_id' => auth()->user()->id,
                 'project_id' => $project->id,
-                'status' => 'status_0',
+                'status' => 'status_1',
             ];
 
             $item = Stage::create($data);
@@ -65,7 +79,7 @@ class Stage extends Model
                     'stage_id' => $item->id,
                     'user_id' => auth()->user()->id,
                     'project_id' => $project->id,
-                    'status' => 'status_0',
+                    'status' => 'status_1',
                 ];
 
                 Stage::create($data);
