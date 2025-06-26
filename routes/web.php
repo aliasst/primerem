@@ -2,8 +2,11 @@
 
 use App\Http\Controllers\Cabinet\DashboardController;
 use App\Http\Controllers\Cabinet\ProjectActController;
+use App\Http\Controllers\Cabinet\ProjectContractorController;
 use App\Http\Controllers\Cabinet\ProjectInvoiceController;
 use App\Http\Controllers\Cabinet\ProjectController;
+use App\Http\Controllers\Cabinet\ProjectPurchaseController;
+use App\Http\Controllers\Cabinet\ProjectReportController;
 use App\Http\Controllers\Cabinet\ProjectStageController;
 use App\Http\Controllers\Cabinet\ProjectUserController;
 use App\Http\Controllers\Cabinet\SuperUserController;
@@ -99,5 +102,28 @@ Route::prefix('cabinet')->middleware(['only-auth'])->group(function (){
     Route::put('/projects/{project}/stages/{stage}', [ProjectStageController::class, 'update'])->name('cabinet.project.stage.update');
     Route::delete('/projects/{project}/stages/{stage}', [ProjectStageController::class, 'destroy'])->name('cabinet.project.stage.destroy');
 
+    Route::get('/projects/{project}/reports', [ProjectReportController::class, 'index'])->name('cabinet.project.report.index');
+    Route::post('/projects/{project}/reports', [ProjectReportController::class, 'store'])->name('cabinet.project.report.store');
+    Route::get('/projects/{project}/reports/{stage}', [ProjectReportController::class, 'show'])->name('cabinet.project.report.show');
+    Route::get('/projects/{project}/reports/{stage}/edit', [ProjectReportController::class, 'edit'])->name('cabinet.project.report.edit');
+    Route::put('/projects/{project}/reports/{stage}', [ProjectReportController::class, 'update'])->name('cabinet.project.report.update');
+
+
+    Route::get('/projects/{project}/contractors', [ProjectContractorController::class, 'index'])->name('cabinet.project.contractor.index');
+    Route::get('/projects/{project}/contractors/create', [ProjectContractorController::class, 'create'])->name('cabinet.project.contractor.create');
+    Route::post('/projects/{project}/contractors', [ProjectContractorController::class, 'store'])->name('cabinet.project.contractor.store');
+    Route::get('/projects/{project}/contractors/{contractor}', [ProjectContractorController::class, 'show'])->name('cabinet.project.contractor.show');
+    Route::get('/projects/{project}/contractors/{contractor}/edit', [ProjectContractorController::class, 'edit'])->name('cabinet.project.contractor.edit');
+    Route::put('/projects/{project}/contractors/{contractor}', [ProjectContractorController::class, 'update'])->name('cabinet.project.contractor.update');
+    Route::delete('/projects/{project}/contractors/{contractor}', [ProjectContractorController::class, 'destroy'])->name('cabinet.project.contractor.destroy');
+
+
+    Route::get('/projects/{project}/purchases', [ProjectPurchaseController::class, 'index'])->name('cabinet.project.purchase.index');
+    Route::get('/projects/{project}/purchases/create', [ProjectPurchaseController::class, 'create'])->name('cabinet.project.purchase.create');
+    Route::post('/projects/{project}/purchases', [ProjectPurchaseController::class, 'store'])->name('cabinet.project.purchase.store');
+    Route::get('/projects/{project}/purchases/{purchase}', [ProjectPurchaseController::class, 'show'])->name('cabinet.project.purchase.show');
+    Route::get('/projects/{project}/purchases/{purchase}/edit', [ProjectPurchaseController::class, 'edit'])->name('cabinet.project.purchase.edit');
+    Route::put('/projects/{project}/purchases/{purchase}', [ProjectPurchaseController::class, 'update'])->name('cabinet.project.purchase.update');
+    Route::delete('/projects/{project}/purchases/{purchase}', [ProjectPurchaseController::class, 'destroy'])->name('cabinet.project.purchase.destroy');
 
 });

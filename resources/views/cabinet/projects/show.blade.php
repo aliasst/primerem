@@ -38,15 +38,19 @@
             </div>
 
 
-
             <div class="col-12 ">
                 <div class="cabinet-menu" id="cabinet-menu">
-                    <a href="{{route('cabinet.project.invoice.index', $project->id)}}" class="btn orange-btn orange-btn-min" role="button">Счета</a>
-                    <a href="{{route('cabinet.project.act.index', $project->id)}}" class="btn orange-btn orange-btn-min" role="button">Акты</a>
-                    <a href="{{route('cabinet.project.stage.index', $project->id)}}" class="btn orange-btn orange-btn-min" role="button">Этапы</a>
-                    <a href="" class="btn orange-btn orange-btn-min" role="button">Отчеты</a>
-                    <a href="" class="btn orange-btn orange-btn-min" role="button">Подрядчики</a>
-                    <a href="" class="btn orange-btn orange-btn-min" role="button">Закупки</a>
+                    <a href="{{route('cabinet.project.invoice.index', $project->id)}}"
+                       class="btn orange-btn orange-btn-min" role="button">Счета</a>
+                    <a href="{{route('cabinet.project.act.index', $project->id)}}" class="btn orange-btn orange-btn-min"
+                       role="button">Акты</a>
+                    <a href="{{route('cabinet.project.stage.index', $project->id)}}"
+                       class="btn orange-btn orange-btn-min" role="button">Этапы</a>
+                    <a href="{{route('cabinet.project.report.index', $project->id)}}"
+                       class="btn orange-btn orange-btn-min" role="button">Отчеты</a>
+                    <a href="{{route('cabinet.project.contractor.index', $project->id)}}"
+                       class="btn orange-btn orange-btn-min" role="button">Подрядчики</a>
+                    <a href="{{route('cabinet.project.purchase.index', $project->id)}}" class="btn orange-btn orange-btn-min" role="button">Закупки</a>
 
                 </div>
             </div>
