@@ -71,6 +71,8 @@ class ProjectStageController extends Controller
             ->get();
 
 
+
+
         return view('cabinet.projects.stages.index', compact('stages', 'project'));
 
     }
@@ -94,9 +96,11 @@ class ProjectStageController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Project $project, Stage $stage)
     {
-        //
+        $files = $stage->files()->get();
+
+        return view('cabinet.projects.reports.show', compact('project', 'stage', 'files'));
     }
 
     /**

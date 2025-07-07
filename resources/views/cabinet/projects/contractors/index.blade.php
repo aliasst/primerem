@@ -65,10 +65,10 @@
 
                                 <tr class="">
                                     <td aria-label="Номер"><a style="white-space: nowrap" class="btn-link"
-                                                                        href="{{route ('cabinet.project.contractor.edit', [$project->id, $contractor->id])}}">{{ $loop->iteration }}</a>
+                                                                        href="{{route ('cabinet.project.contractor.show', [$project->id, $contractor->id])}}">{{ $loop->iteration }}</a>
                                     </td>
                                     <td aria-label="Название"><a style="white-space: nowrap" class="btn-link"
-                                                              href="{{route ('cabinet.project.contractor.edit', [$project->id, $contractor->id])}}">{{ $contractor->title }}</a>
+                                                              href="{{route ('cabinet.project.contractor.show', [$project->id, $contractor->id])}}">{{ $contractor->title }}</a>
                                     </td>
                                     <td aria-label="Этап">
                                         {{ $contractor->stage->title }}
@@ -82,7 +82,9 @@
                                     <td aria-label="Действия">
 
                                         <a href="{{route ('cabinet.project.contractor.show',  [$project->id, $contractor->id])}}"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                        @if (Auth::user()->role != 'project_user')
                                         <a href="{{route ('cabinet.project.contractor.edit',  [$project->id, $contractor->id])}}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                        @endif
                                     </td>
 
 
@@ -98,13 +100,14 @@
 
                 </div>
 
-
+                @if (Auth::user()->role != 'project_user')
                 <div class="text-center">
                     <a href="{{route('cabinet.project.contractor.create',  [$project->id])}}"
                        class="btn orange-btn orange-btn-min orange-btn-center">
                         Добавить подрядчика
                     </a>
                 </div>
+                @endif
 
             </div>
 

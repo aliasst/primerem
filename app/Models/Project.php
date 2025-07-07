@@ -24,6 +24,29 @@ class Project extends Model
         'progress',
     ];
 
+    public function stages()
+    {
+        return $this->hasMany(Stage::class);
+    }
 
+    public function contractors()
+    {
+        return $this->hasMany(Contractor::class);
+    }
+
+    public function purchases()
+    {
+        return $this->hasMany(Purchase::class);
+    }
+
+    public function invoices()
+    {
+        return $this->hasMany(Invoice::class);
+    }
+
+    public function acts()
+    {
+        return $this->hasMany(Act::class);
+    }
 
 }

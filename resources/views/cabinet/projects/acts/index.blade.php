@@ -64,7 +64,7 @@
 
                                 <tr class="">
                                     <td aria-label="Номер счета"><a style="white-space: nowrap" class="btn-link"
-                                                                        href="{{route ('cabinet.project.invoice.edit', [$project->id, $act->id])}}">{{ $act->act_number}}</a>
+                                                                        href="{{route ('cabinet.project.invoice.show', [$project->id, $act->id])}}">{{ $act->act_number}}</a>
                                     </td>
                                     <td aria-label="Дата создания">{{ $act->created_at->format('d.m.Y') }}</td>
                                     <td aria-label="Статус">
@@ -83,7 +83,9 @@
                                     <td aria-label="Действия">
 
                                         <a href="{{route ('cabinet.project.act.show',  [$project->id, $act->id])}}"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                        @if (Auth::user()->role != 'project_user')
                                         <a href="{{route ('cabinet.project.act.edit',  [$project->id, $act->id])}}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                        @endif
                                     </td>
 
 
@@ -99,13 +101,14 @@
 
                 </div>
 
-
+                @if (Auth::user()->role != 'project_user')
                 <div class="text-center">
                     <a href="{{route('cabinet.project.act.create',  [$project->id])}}"
                        class="btn orange-btn orange-btn-min orange-btn-center">
                         Добавить акт
                     </a>
                 </div>
+                @endif
 
             </div>
 

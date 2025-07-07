@@ -152,6 +152,15 @@
 
                                                 </div>
                                             </div>
+
+                        <div class="row mt-3">
+                            <div class="col-md-6 offset-md-5">
+                                    <a href="{{route('cabinet.project.copy', $project->id)}}" class="btn-link">Копировать проект (полностью)</a>
+                                    <a href="{{route('cabinet.project.copystages', $project->id)}}" class="btn-link">Копировать проект (только этапы)</a>
+
+
+                            </div>
+                        </div>
                     </div>
                 </div>
 

@@ -60,6 +60,10 @@ Route::prefix('cabinet')->middleware(['only-auth'])->group(function (){
     Route::get('/projects/{project}/edit', [ProjectController::class, 'edit'])->name('cabinet.project.edit');
     Route::put('/projects/{project}', [ProjectController::class, 'update'])->name('cabinet.project.update');
     Route::delete('/projects/{project}', [ProjectController::class, 'destroy'])->name('cabinet.project.destroy');
+    Route::get('/projects/{project}/copy', [ProjectController::class, 'copy'])->name('cabinet.project.copy');
+    Route::get('/projects/{project}/copystages', [ProjectController::class, 'copyStages'])->name('cabinet.project.copystages');
+
+
 
     Route::get('/projects/{project}/users', [ProjectUserController::class, 'index'])->name('cabinet.project.user.index');
     Route::get('/projects/{project}/users/create', [ProjectUserController::class, 'create'])->name('cabinet.project.user.create');

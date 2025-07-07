@@ -1,6 +1,6 @@
 @extends('layouts.cabinet')
 
-@section('title', 'Просмотр счета')
+@section('title', 'Просмотр этапа')
 
 @section('content')
 

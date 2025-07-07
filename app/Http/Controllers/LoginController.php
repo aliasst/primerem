@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Auth\LoginFormRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -11,6 +12,7 @@ class LoginController extends Controller
     {
         return view('auth.login');
     }
+
 
     public function login(LoginFormRequest $request)
     {
@@ -22,7 +24,12 @@ class LoginController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(route('cabinet.dashboard'));
+        if (Auth::user()->role == 'superadmin') {
+            return redirect()->intended(route('cabinet.dashboard'));
+        } else {
+            return redirect()->route('cabinet.project.show', Auth::user()->project_id);
+        }
+
     }
 
     public function logout(Request $request)

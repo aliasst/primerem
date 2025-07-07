@@ -9,7 +9,12 @@
 
             <div class="col-12 ">
                 <div class="back-log">
-                    <div class="back-link"><a class="btn-link btn-backlink" href="{{ route('cabinet.project.index') }}">Назад</a>
+
+                    <div class="back-link">
+                        @if (Auth::user()->role == 'superadmin')
+                            <a class="btn-link btn-backlink"
+                               href="{{ route('cabinet.project.index') }}">Назад</a>
+                        @endif
                     </div>
                     <div class="logout-link">
                         Вы в личном кабинете!
@@ -50,7 +55,8 @@
                        class="btn orange-btn orange-btn-min" role="button">Отчеты</a>
                     <a href="{{route('cabinet.project.contractor.index', $project->id)}}"
                        class="btn orange-btn orange-btn-min" role="button">Подрядчики</a>
-                    <a href="{{route('cabinet.project.purchase.index', $project->id)}}" class="btn orange-btn orange-btn-min" role="button">Закупки</a>
+                    <a href="{{route('cabinet.project.purchase.index', $project->id)}}"
+                       class="btn orange-btn orange-btn-min" role="button">Закупки</a>
 
                 </div>
             </div>

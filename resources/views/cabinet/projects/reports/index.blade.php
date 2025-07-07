@@ -64,7 +64,7 @@
 
                                 <tr class="parent-tr {{$stage->status}}">
                                     <td aria-label="Название этапа"> <a style="white-space: nowrap" class="btn-link"
-                                                                        href="{{route ('cabinet.project.report.edit', [$project->id, $stage->id])}}">{{ $loop->iteration }}. {{ $stage->title}}</a>
+                                                                        href="{{route ('cabinet.project.report.show', [$project->id, $stage->id])}}">{{ $loop->iteration }}. {{ $stage->title}}</a>
                                     </td>
                                     <td aria-label="Дата старта">{{ $stage->start_date ? $stage->start_date->format('d.m.Y') : ''}}</td>
                                     <td aria-label="Дата завершения">{{ $stage->finish_date ? $stage->finish_date->format('d.m.Y') : ''}}</td>
@@ -79,7 +79,9 @@
                                     <td aria-label="Действия">
 
                                         <a href="{{route ('cabinet.project.report.show',  [$project->id, $stage->id])}}"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                        @if (Auth::user()->role != 'project_user')
                                         <a href="{{route ('cabinet.project.report.edit',  [$project->id, $stage->id])}}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                        @endif
                                     </td>
 
 
@@ -89,7 +91,7 @@
 
                                     <tr class="child-tr {{$child_stage->status}}" >
                                         <td style="padding-left:50px;" aria-label="Название этапа" > <a style="white-space: nowrap" class="btn-link"
-                                                                           href="{{route ('cabinet.project.report.edit', [$project->id, $child_stage->id])}}">- {{ $child_stage->title}}</a>
+                                                                           href="{{route ('cabinet.project.report.show', [$project->id, $child_stage->id])}}">- {{ $child_stage->title}}</a>
                                         </td>
                                         <td aria-label="Дата старта">{{ $child_stage->start_date ? $child_stage->start_date->format('d.m.Y') : '' }}</td>
                                         <td aria-label="Дата завершения">{{ $child_stage->finish_date ? $child_stage->finish_date->format('d.m.Y') : '' }}</td>
@@ -101,7 +103,9 @@
                                         <td aria-label="Действия">
 
                                             <a href="{{route ('cabinet.project.report.show',  [$project->id, $child_stage->id])}}"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                            @if (Auth::user()->role != 'project_user')
                                             <a href="{{route ('cabinet.project.report.edit',  [$project->id, $child_stage->id])}}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                            @endif
                                         </td>
 
 

@@ -64,10 +64,10 @@
 
                                 <tr class="">
                                     <td aria-label="Номер"><a style="white-space: nowrap" class="btn-link"
-                                                                        href="{{route ('cabinet.project.purchase.edit', [$project->id, $purchase->id])}}">{{ $loop->iteration }}</a>
+                                                                        href="{{route ('cabinet.project.purchase.show', [$project->id, $purchase->id])}}">{{ $loop->iteration }}</a>
                                     </td>
                                     <td aria-label="Название"><a style="white-space: nowrap" class="btn-link"
-                                                              href="{{route ('cabinet.project.purchase.edit', [$project->id, $purchase->id])}}">{{ $purchase->title }}</a>
+                                                              href="{{route ('cabinet.project.purchase.show', [$project->id, $purchase->id])}}">{{ $purchase->title }}</a>
                                     </td>
                                     <td aria-label="Этап">
                                         {{ $purchase->stage->title }}
@@ -79,7 +79,9 @@
                                     <td aria-label="Действия">
 
                                         <a href="{{route ('cabinet.project.purchase.show',  [$project->id, $purchase->id])}}"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                        @if (Auth::user()->role != 'project_user')
                                         <a href="{{route ('cabinet.project.purchase.edit',  [$project->id, $purchase->id])}}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                        @endif
                                     </td>
 
 
@@ -95,13 +97,14 @@
 
                 </div>
 
-
+                @if (Auth::user()->role != 'project_user')
                 <div class="text-center">
                     <a href="{{route('cabinet.project.purchase.create',  [$project->id])}}"
                        class="btn orange-btn orange-btn-min orange-btn-center">
                         Добавить закупку
                     </a>
                 </div>
+                @endif
 
             </div>
 
