@@ -16,25 +16,10 @@
                                href="{{ route('cabinet.project.index') }}">Назад</a>
                         @endif
                     </div>
-                    <div class="logout-link">
-                        Вы в личном кабинете!
-                        @if (Route::has('logout'))
-                            <a class="btn-link btn-unlogin" href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
-                                                                         document.getElementById('logout-form').submit();">
-                                {{ __('Выйти') }}
-                            </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
-
-                        @endif
-                    </div>
                 </div>
 
 
-                <div class="py-5 text-center">
-                    <div class="logo-cell">Prime<span>REM</span></div>
+                <div class=" text-center">
                     <div class="progress-cell">Статус Ремонта: {{$project->progress}}%</div>
 
                     <h2>Выберите действие для проекта {{$project->name}}</h2>
@@ -45,18 +30,49 @@
 
             <div class="col-12 ">
                 <div class="cabinet-menu" id="cabinet-menu">
-                    <a href="{{route('cabinet.project.invoice.index', $project->id)}}"
-                       class="btn orange-btn orange-btn-min" role="button">Счета</a>
-                    <a href="{{route('cabinet.project.act.index', $project->id)}}" class="btn orange-btn orange-btn-min"
-                       role="button">Акты</a>
-                    <a href="{{route('cabinet.project.stage.index', $project->id)}}"
-                       class="btn orange-btn orange-btn-min" role="button">Этапы</a>
-                    <a href="{{route('cabinet.project.report.index', $project->id)}}"
-                       class="btn orange-btn orange-btn-min" role="button">Отчеты</a>
-                    <a href="{{route('cabinet.project.contractor.index', $project->id)}}"
-                       class="btn orange-btn orange-btn-min" role="button">Подрядчики</a>
-                    <a href="{{route('cabinet.project.purchase.index', $project->id)}}"
-                       class="btn orange-btn orange-btn-min" role="button">Закупки</a>
+                    <a class="cabinet-menu-item" href="{{route('cabinet.project.invoice.index', $project->id)}}"
+                       role="button">
+                        <div class="menu-item-ico"><img class=""
+                                                        src="{{url('/img/icons/invoice.svg')}}"
+                                                        alt=""/></div>
+                        <div class="menu-item-name">Счета</div>
+                        <div class="menu-item-linc">Смотреть</div>
+                    </a>
+                    <a class="cabinet-menu-item" href="{{route('cabinet.project.act.index', $project->id)}}"
+
+                    >
+                        <div class="menu-item-ico"><img class=""
+                                                        src="{{url('/img/icons/act.svg')}}"
+                                                        alt=""/></div>
+                        <div class="menu-item-name">Акты</div>
+                        <div class="menu-item-linc">Смотреть</div>
+                    </a>
+                    <a class="cabinet-menu-item" href="{{route('cabinet.project.stage.index', $project->id)}}"
+                       role="button">
+                        <div class="menu-item-ico"><img class=""
+                                                        src="{{url('/img/icons/stage.svg')}}"
+                                                        alt=""/></div>
+                        <div class="menu-item-name">Этапы</div>
+                        <div class="menu-item-linc">Смотреть</div>
+                    </a>
+                    <a class="cabinet-menu-item" href="{{route('cabinet.project.report.index', $project->id)}}"
+                       role="button"><div class="menu-item-ico"><img class=""
+                                                                     src="{{url('/img/icons/report.svg')}}"
+                                                                     alt=""/></div>
+                        <div class="menu-item-name">Отчеты</div>
+                        <div class="menu-item-linc">Смотреть</div></a>
+                    <a class="cabinet-menu-item" href="{{route('cabinet.project.contractor.index', $project->id)}}"
+                       role="button"><div class="menu-item-ico"><img class=""
+                                                                     src="{{url('/img/icons/contractor.svg')}}"
+                                                                     alt=""/></div>
+                        <div class="menu-item-name">Подрядчики</div>
+                        <div class="menu-item-linc">Смотреть</div></a>
+                    <a class="cabinet-menu-item" href="{{route('cabinet.project.purchase.index', $project->id)}}"
+                       role="button"><div class="menu-item-ico"><img class=""
+                                                                     src="{{url('/img/icons/purchase.svg')}}"
+                                                                     alt=""/></div>
+                        <div class="menu-item-name">Закупки</div>
+                        <div class="menu-item-linc">Смотреть</div></a>
 
                 </div>
             </div>

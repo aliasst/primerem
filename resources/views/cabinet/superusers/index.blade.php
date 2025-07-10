@@ -14,25 +14,10 @@
                 <div class="back-log">
                     <div class="back-link"><a class="btn-link btn-backlink" href="{{ route('cabinet.dashboard') }}">Назад</a>
                     </div>
-                    <div class="logout-link">
-                        Вы в личном кабинете!
-                        @if (Route::has('logout'))
-                            <a class="btn-link btn-unlogin" href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
-                                                                         document.getElementById('logout-form').submit();">
-                                {{ __('Выйти') }}
-                            </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
-
-                        @endif
-                    </div>
                 </div>
 
 
-                <div class="py-5 text-center">
-                    <div class="logo-cell">Prime<span>REM</span></div>
+                <div class="text-center">
                     <h2>Список главных админов</h2>
                 </div>
 

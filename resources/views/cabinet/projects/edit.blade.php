@@ -11,26 +11,11 @@
                 <div class="back-log">
                     <div class="back-link"><a class="btn-link btn-backlink" href="{{ route('cabinet.project.index') }}">Назад</a>
                     </div>
-                    <div class="logout-link">
-                        Вы в личном кабинете!
-                        @if (Route::has('logout'))
-                            <a class="btn-link btn-unlogin" href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
-                                                                         document.getElementById('logout-form').submit();">
-                                {{ __('Выйти') }}
-                            </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
-
-                        @endif
-                    </div>
                 </div>
 
 
-                <div class="py-5 text-center">
-                    <div class="logo-cell " style="margin-bottom: 0">Prime<span>REM</span></div>
-                </div>
+                <div class="card-head-new"> Редактирование проекта</div>
+                <div class="card-head-new-sub"></div>
 
                 @include('flash-messages')
 
@@ -39,25 +24,26 @@
             <div class="col-12 col-md-8">
 
                 <div class="request-card card auth-card">
-                    <div class="card-head"> Просмотр и редактирование проекта</div>
 
                     <div class="card-content">
                         <form method="post" action="{{ route('cabinet.project.update', [$project->id] ) }}">
                             @method('put')
                             @csrf
 
-
                             <div class="row mb-3">
-                                <label for="name" class="col-md-5 col-form-label text-md-end">Название проекта</label>
 
-                                <div class="col-md-6">
-                                    <input id="name" type="text"
-                                           class="form-control @error('name') is-invalid @enderror" name="name"
-                                           value="{{ old('name') ?? $project->name }}">
+
+                                <div class="col-12">
+                                    <div class="form-input">
+                                        <label for="name" class="">Название проекта *</label>
+                                        <input id="name" type="text"
+                                               class="form-control @error('name') is-invalid @enderror" name="name"
+                                               value="{{ old('name') ?? $project->name }}">
+                                    </div>
 
                                     @error('name')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <span>{{ $message }}</span>
                                     </span>
                                     @enderror
                                 </div>
@@ -65,34 +51,40 @@
 
 
                             <div class="row mb-3">
-                                <label for="organization" class="col-md-5 col-form-label text-md-end">Юр. лицо</label>
 
-                                <div class="col-md-6">
-                                    <input id="organization" type="text"
-                                           class="form-control @error('organization') is-invalid @enderror"
-                                           name="organization"
-                                           value="{{ old('organization') ?? $project->organization }}">
+
+                                <div class="col-12">
+                                    <div class="form-input">
+                                        <label for="organization" class="">Юр. лицо *</label>
+                                        <input id="organization" type="text"
+                                               class="form-control @error('organization') is-invalid @enderror"
+                                               name="organization"
+                                               value="{{ old('organization') ?? $project->organization }}">
+                                    </div>
 
                                     @error('organization')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <span>{{ $message }}</span>
                                     </span>
                                     @enderror
                                 </div>
                             </div>
 
-
                             <div class="row mb-3">
-                                <label for="email" class="col-md-5 col-form-label text-md-end">Email</label>
 
-                                <div class="col-md-6">
-                                    <input id="email" type="email"
-                                           class="form-control @error('email') is-invalid @enderror" name="email"
-                                           value="{{ old('email') ?? $project->email }}" autocomplete="email">
+
+                                <div class="col-12">
+                                    <div class="form-input">
+                                        <label for="email" class="">Email *</label>
+                                        <input id="email" type="email"
+                                               class="form-control @error('email') is-invalid @enderror" name="email"
+                                               value="{{ old('email') ?? $project->email }}" autocomplete="email">
+
+                                    </div>
 
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <span>{{ $message }}</span>
                                     </span>
                                     @enderror
                                 </div>
@@ -100,28 +92,37 @@
 
 
                             <div class="row mb-3">
-                                <label for="phone" class="col-md-5 col-form-label text-md-end">Phone</label>
 
-                                <div class="col-md-6">
-                                    <input id="phone" type="tel"
-                                           class="form-control @error('phone') is-invalid @enderror" name="phone"
-                                           value="{{ old('phone') ?? $project->phone }}" autocomplete="phone">
+
+                                <div class="col-12">
+                                    <div class="form-input">
+                                        <label for="phone" class="">Телефон *</label>
+                                        <input id="phone" type="tel"
+                                               class="form-control @error('phone') is-invalid @enderror" name="phone"
+                                               value="{{ old('phone') ?? $project->phone }}" autocomplete="phone">
+
+                                    </div>
 
                                     @error('phone')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <span>{{ $message }}</span>
                                     </span>
                                     @enderror
                                 </div>
                             </div>
 
-                            <div class="row mb-3">
-                                <label for="details" class="col-md-5 col-form-label text-md-end">Реквизиты</label>
 
-                                <div class="col-md-6">
-                                    <textarea name="details" id="details"
-                                              class="form-control @error('details') is-invalid @enderror" cols="30"
-                                              rows="6">{{ old('details') ?? $project->details }}</textarea>
+                            <div class="row mb-3">
+
+
+                                <div class="col-12">
+                                    <div class="form-input">
+                                        <label for="details" class="">Реквизиты</label>
+                                        <textarea name="details" id="details"
+                                                  class="form-control @error('details') is-invalid @enderror" cols="30"
+                                                  rows="6">{{ old('details') ?? $project->details }}</textarea>
+
+                                    </div>
 
                                     @error('details')
                                     <span class="invalid-feedback" role="alert">
@@ -131,32 +132,39 @@
                                 </div>
                             </div>
 
+                            <div class="row mb-3">
+                                <div class="col-12">
+                                    <div class="btn-row btn-row-center">
+                                        <button type="submit" class="orange-btn orange-btn-min">
+                                            {{ __('Сохранить') }}
+                                        </button>
+                                    </div>
 
-                            <div class="row mb-2">
-                                <div class="col-md-6 offset-md-5">
-                                    <button type="submit" class="orange-btn orange-btn-min">
-                                        {{ __('Сохранить') }}
-                                    </button>
+
                                 </div>
                             </div>
 
+
                         </form>
 
-                                            <div class="row mt-3">
-                                                <div class="col-md-6 offset-md-5">
-                                                    <form action="{{ route('cabinet.project.destroy', $project->id) }}" method="POST" onsubmit="return confirm('Вы точно хотите удалить проект?');">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button class="btn-link" type="submit" onclick="">Удалить проект</button>
-                                                    </form>
+                        <div class="row mb-3">
+                            <div class="col-12 text-center">
+                                <form action="{{ route('cabinet.project.destroy', $project->id) }}" method="POST"
+                                      onsubmit="return confirm('Вы точно хотите удалить проект?');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn-link" type="submit" onclick="">Удалить проект</button>
+                                </form>
 
-                                                </div>
-                                            </div>
+                            </div>
+                        </div>
 
-                        <div class="row mt-3">
-                            <div class="col-md-6 offset-md-5">
-                                    <a href="{{route('cabinet.project.copy', $project->id)}}" class="btn-link">Копировать проект (полностью)</a>
-                                    <a href="{{route('cabinet.project.copystages', $project->id)}}" class="btn-link">Копировать проект (только этапы)</a>
+                        <div class="row mb-3">
+                            <div class="col-12 text-center">
+                                <a href="{{route('cabinet.project.copy', $project->id)}}" class="btn-link">Копировать
+                                    проект (полностью)</a><br>
+                                <a href="{{route('cabinet.project.copystages', $project->id)}}" class="btn-link">Копировать
+                                    проект (только этапы)</a>
 
 
                             </div>

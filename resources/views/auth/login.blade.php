@@ -3,95 +3,99 @@
 @section('title', 'Вход в Личный кабинет')
 
 @section('content')
-        <div class="container">
-            <div class="row justify-content-center">
+    <div class="container">
+        <div class="row justify-content-center">
 
-                <div class="col-12">
-                    <div class="logo-cell"><a href="/">Prime<span>REM</span></a></div>
-                </div>
-
-                <div class="col-xs-12 col-md-7">
-                    <div class="request-card card auth-card">
-                        <div class="card-head ">Вход в личный кабинет</div>
-
-                        <div class="card-content">
-                            @if (session('status'))
-                                <div class="alert alert-success" role="alert">
-                                    {{ session('status') }}
-                                </div>
-                            @endif
-
-                            <form method="POST" action="{{ route('login') }}">
+            <div class="card-head-new">Вход в личный кабинет</div>
+            <div class="card-head-new-sub">Заполните данные, чтобы попасть в личный кабинет</div>
 
 
-                                @csrf
+            <div class="col-xs-12 col-md-8">
+                <div class="request-card card auth-card">
+                    <div class="card-content">
+                        @if (session('status'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('status') }}
+                            </div>
+                        @endif
 
-                                <div class="row mb-3">
-                                    <label for="email" class="col-md-3 col-form-label text-md-end">Email</label>
+                        <form method="POST" action="{{ route('login') }}">
 
-                                    <div class="col-md-8">
-                                        <input id="email" type="email"
-                                               class="form-control @error('email') is-invalid @enderror"
-                                               name="email"
-                                               value="{{ old('email') }}" required autocomplete="email" autofocus>
 
-                                        @error('email')
-                                        <span class="invalid-feedback" role="alert">
+                            @csrf
+
+
+                            <div class="row mb-3">
+
+
+                                <div class="col-12">
+                                    <div class="form-input">
+                                    <label for="email" class="">Email *</label>
+                                    <input id="email" type="email"
+                                           class=" @error('email') is-invalid @enderror"
+                                           name="email"
+                                           value="{{ old('email') }}" required autocomplete="off" autofocus>
+                                    </div>
+
+                                    @error('email')
+                                    <span class="invalid-feedback" role="alert">
                                         <span>{{ $message }}</span>
                                     </span>
-                                        @enderror
-                                    </div>
+                                    @enderror
                                 </div>
+                            </div>
 
-                                <div class="row mb-3">
-                                    <label for="password" class="col-md-3 col-form-label text-md-end">Пароль</label>
 
-                                    <div class="col-md-8">
+                            <div class="row mb-3">
+
+
+                                <div class="col-12">
+                                    <div class="form-input">
+                                        <label for="email" class="">Пароль *</label>
                                         <input id="password" type="password"
                                                class="form-control @error('password') is-invalid @enderror"
                                                name="password" required autocomplete="current-password">
+                                    </div>
 
-                                        @error('password')
-                                        <span class="invalid-feedback" role="alert">
+                                    @error('password')
+                                    <span class="invalid-feedback" role="alert">
                                         <span>{{ $message }}</span>
                                     </span>
-                                        @enderror
-                                    </div>
+                                    @enderror
                                 </div>
+                            </div>
 
 
-                                <div class="row mb-3">
-                                    <div class="col-md-3"></div>
 
-                                    <div class="col-md-8">
+
+                            <div class="row mb-3">
+                                <div class="col-12">
+                                    <div class="btn-row btn-row-login">
                                         <button type="submit" class="orange-btn orange-btn-min">
                                             {{ __('Войти') }}
                                         </button>
-                                    </div>
-                                </div>
 
-
-                                <div class="row mb-3">
-                                    <div class="col-md-3"></div>
-
-                                    <div class="col-md-8">
                                         @if (Route::has('register'))
-                                            <div class="register-link">
-                                                Нет аккаунта?
-                                                <a class=" btn-link" href="{{ route('register.form') }}">
+                                                <a class="black-link" href="{{ route('register.form') }}">
                                                     {{ __('Зарегистироваться') }}
                                                 </a>
-                                            </div>
+
                                         @endif
+
                                     </div>
+
+
+
+
                                 </div>
+                            </div>
 
 
-                            </form>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
 @endsection

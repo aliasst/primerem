@@ -11,26 +11,11 @@
                 <div class="back-log">
                     <div class="back-link"><a class="btn-link btn-backlink" href="{{ route('cabinet.dashboard') }}">Назад</a>
                     </div>
-                    <div class="logout-link">
-                        Вы в личном кабинете!
-                        @if (Route::has('logout'))
-                            <a class="btn-link btn-unlogin" href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
-                                                                         document.getElementById('logout-form').submit();">
-                                {{ __('Выйти') }}
-                            </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
-
-                        @endif
-                    </div>
                 </div>
 
 
-                <div class="py-5 text-center">
-                    <div class="logo-cell">Prime<span>REM</span></div>
-                    <h2>Список всех проектов</h2>
+                <div class="py-2 text-center">
+                    <h2 class="">Список всех проектов</h2>
                 </div>
 
                 @include('flash-messages')
@@ -72,8 +57,10 @@
                                     </td>
                                     <td aria-label="Действия">
 
-                                        <a href="{{route ('cabinet.project.show', $project->id)}}"><i class="fa fa-eye" aria-hidden="true"></i></a>
-                                        <a href="{{route ('cabinet.project.edit', $project->id)}}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                        <a href="{{route ('cabinet.project.show', $project->id)}}"><i class="fa fa-eye"
+                                                                                                      aria-hidden="true"></i></a>
+                                        <a href="{{route ('cabinet.project.edit', $project->id)}}"><i
+                                                class="fa fa-pencil" aria-hidden="true"></i></a>
                                     </td>
 
 
