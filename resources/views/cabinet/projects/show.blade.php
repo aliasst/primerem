@@ -20,9 +20,15 @@
 
 
                 <div class=" text-center">
-                    <div class="progress-cell">Статус Ремонта: {{$project->progress}}%</div>
-
                     <h2>Выберите действие для проекта {{$project->name}}</h2>
+                </div>
+
+                <div class="progress-section">
+                <div class="progress-cell">Статус Ремонта: {{round($project->progress, 1)}}%</div>
+
+                <div class="progress-wrap-m progress-m" data-progress-percent="{{$project->progress}}">
+                    <div class="progress-bar-m progress-m"></div>
+                </div>
                 </div>
 
             </div>

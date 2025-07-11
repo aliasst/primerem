@@ -122,6 +122,10 @@ section {
     overflow: hidden;
 }
 
+.cabinet-body section{
+    overflow: visible;
+}
+
 
 H1,
 H2,
@@ -235,8 +239,7 @@ a:hover {
 }
 
 .cabinet-body {
-    padding-top: 30px;
-    padding-bottom: 30px;
+
 }
 
 section {
@@ -521,11 +524,7 @@ header {
     text-decoration: none;
 }
 
-.progress-cell {
-    font-size: 26px;
-    margin-bottom: 20px;
-    margin-top: -20px;
-}
+
 
 .header-menu-item ul {
 
@@ -1317,6 +1316,123 @@ section.content {
 
 /*личный кабинет*/
 
+
+.action
+{
+    position: relative;
+}
+
+.action .profile
+{
+    position: relative;
+    width: 56px;
+    height: 56px;
+    border-radius: 100%;
+    /*overflow: hidden;*/
+    cursor: pointer;
+}
+
+.action .profile img
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.action .menu
+{
+    position: absolute;
+    top: 120px;
+    right: -10px;
+    padding: 10px 20px;
+    background: #fff;
+    width: 200px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+    border-radius: 15px;
+    transition: 0.5s;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.action .menu.active
+{
+    top: 80px;
+    visibility: visible;
+    opacity: 1;
+}
+.action .menu::before
+{
+    content: "";
+    position: absolute;
+    top: -5px;
+    right: 28px;
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    transform: rotate(45deg);
+}
+.action .menu h3
+{
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    padding: 20px 0;
+    font-weight: 500;
+    color: #555;
+    line-height: 1.2em;
+}
+
+
+.action .menu h3 span
+{
+    font-size: 14px;
+    color: #cecece;
+    font-weight: 500;
+}
+
+.action .menu ul li
+{
+    list-style: none;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+}
+
+
+.action .menu ul li img
+{
+    max-width: 20px !important;
+    margin-right: 10px;
+    opacity: 0.5;
+    transition: 0.5s;
+}
+
+.action .menu ul li:hover img
+{
+    opacity: 1;
+}
+
+.action .menu ul li a
+{
+    display: inline-block;
+    text-decoration: none;
+    transition: 0.5s;
+    color: rgb(0, 0, 0);
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+    text-align: left;
+}
+
+.action .menu ul li:hover a
+{
+    color: #ff5d94;
+}
+
 .cabinet-header {
     padding-bottom: 0;
 }
@@ -1428,6 +1544,10 @@ section.content {
 
 .btn-link:hover {
     color: rgb(237, 86, 74);
+}
+
+.btn-backlink {
+    color:#000;
 }
 
 .col-form-label {
@@ -1576,8 +1696,55 @@ section.content {
     text-decoration-line: underline;
 }
 
+.progress-section {
+    margin-top: -20px;
+    margin-bottom: 40px;
+}
+
+.progress-cell {
+    color: rgb(6, 0, 0);
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 21px;
+    text-align: left;
+    margin-bottom: 20px;
+}
 
 
+.progress-m {
+    width: 100%;
+    height: 13px;
+}
+
+.progress-wrap-m {
+
+    background: rgb(237, 86, 74);
+    margin: 20px 0;
+    /*overflow: hidden;*/
+    position: relative;
+    border-radius: 1000px;
+}
+.progress-wrap-m .progress-bar-m {
+    background: rgb(224, 181, 66);
+    border-radius:1000px;
+    left: 0;
+    position: absolute;
+    top: 0;
+
+
+}
+.progress-wrap-m .progress-bar-m:before {
+    display:table;
+    content:'';
+    border-radius: 1000px;
+    width: 15px;
+    height: 15px;
+    background: rgb(237, 86, 74);
+    position: absolute;
+    left:-3px;
+    top:-1px;
+}
 
 .cabinet-menu .btn {
     display: inline-block !important;

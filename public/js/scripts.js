@@ -1,6 +1,44 @@
+function menuToggle() {
+    const toggleMenu = document.querySelector('.menu');
+    toggleMenu.classList.toggle('active');
+}
+
+
 (function ($) {
 
+
+
+
+
     $(document).ready(function () {
+
+
+
+
+
+
+        // on page load...
+        moveProgressBar();
+        // on browser resize...
+        $(window).resize(function() {
+            moveProgressBar();
+        });
+
+        // SIGNATURE PROGRESS
+        function moveProgressBar() {
+            console.log("moveProgressBar");
+            var getPercent = ($('.progress-wrap-m').data('progress-percent') / 100);
+            var getProgressWrapWidth = $('.progress-wrap-m').width();
+            var progressTotal = getPercent * getProgressWrapWidth;
+            var animationLength = 0;
+
+            // on page load, animate percentage bar to data percentage length
+            // .stop() used to prevent animation queueing
+            $('.progress-bar-m').stop().animate({
+                left: progressTotal
+            }, animationLength);
+        }
+
 
 
             $.datepicker.setDefaults( $.datepicker.regional[ "ru" ] );
