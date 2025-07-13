@@ -9,7 +9,7 @@
             <div class="col-12">
 
                 <div class="back-log">
-                    <div class="back-link"><a class="btn-link btn-backlink" href="{{ route('cabinet.project.index') }}">Назад</a>
+                    <div class="back-link"><a class="btn-link btn-backlink" href="{{ route('cabinet.project.index') }}">Вернуться назад</a>
                     </div>
                 </div>
 

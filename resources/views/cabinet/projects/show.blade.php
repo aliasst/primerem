@@ -13,7 +13,7 @@
                     <div class="back-link">
                         @if (Auth::user()->role == 'superadmin')
                             <a class="btn-link btn-backlink"
-                               href="{{ route('cabinet.project.index') }}">Назад</a>
+                               href="{{ route('cabinet.project.index') }}">Вернуться назад</a>
                         @endif
                     </div>
                 </div>

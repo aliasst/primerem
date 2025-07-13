@@ -11,28 +11,14 @@
 
             <div class="col-12">
                 <div class="back-log">
-                    <div class="back-link"><a class="btn-link btn-backlink" href="{{ route('cabinet.project.invoice.index',  [$project->id]) }}">Назад</a>
-                    </div>
-                    <div class="logout-link">
-                        Вы в личном кабинете!
-                        @if (Route::has('logout'))
-                            <a class="btn-link btn-unlogin" href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
-                                                                         document.getElementById('logout-form').submit();">
-                                {{ __('Выйти') }}
-                            </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
-
-                        @endif
+                    <div class="back-link"><a class="btn-link btn-backlink" href="{{ route('cabinet.project.invoice.index',  [$project->id]) }}">Вернуться назад</a>
                     </div>
                 </div>
 
+                <div class="card-head-new"> Просмотр счета</div>
+                <div class="card-head-new-sub"></div>
 
-                <div class="py-5 text-center">
-                    <div class="logo-cell " style="margin-bottom: 0">Prime<span>REM</span></div>
-                </div>
+
 
                 @include('flash-messages')
 
@@ -41,7 +27,6 @@
             <div class="col-12 col-md-8">
 
                 <div class="request-card card auth-card">
-                    <div class="card-head">Просмотр счета</div>
 
                     <div class="card-content">
                         <form method="post"
@@ -49,36 +34,45 @@
                               enctype="">
                             @csrf
 
-
                             <div class="row mb-3">
-                                <label for="name" class="col-md-4 col-form-label text-md-end">Номер счета</label>
 
-                                <div class="col-md-6">
-                                    <input id="invoice_number" type="text"
-                                           class="form-control"
-                                           name="invoice_number"
-                                           value="{{$invoice->invoice_number }}" disabled>
+
+                                <div class="col-12">
+                                    <div class="form-input">
+                                        <label for="invoice_number" class="">Номер счета</label>
+                                        <input id="invoice_number" type="text"
+                                               class=""
+                                               name="invoice_number"
+                                               value="{{$invoice->invoice_number }}" disabled>
+                                    </div>
+
+
                                 </div>
                             </div>
 
 
                             <div class="row mb-3">
 
-                                <label for="status" class="col-md-4 col-form-label text-md-end">Статус</label>
-                                <div class="col-md-6">
-                                    <input id="status" type="text"
-                                           class="form-control"
-                                           name="status"
-                                           value="{{ \App\Models\Invoice::$statuses[$invoice->status] }}" disabled>
-                                </div>
 
+                                <div class="col-12">
+                                    <div class="form-input">
+                                        <label for="status" class="">Статус</label>
+                                        <input id="status" type="text"
+                                               class=""
+                                               name="status"
+                                               value="{{ \App\Models\Invoice::$statuses[$invoice->status] }}" disabled>
+                                    </div>
+
+
+                                </div>
                             </div>
 
 
-                            <div class="row mb-3">
-                                <label for="status" class="col-md-4 col-form-label text-md-end">Счет</label>
 
-                                <div class="col-md-6">
+
+
+                            <div class="row mb-3">
+                                <div class="col-12">
                                     @if(!$files->isEmpty())
                                         <div class="uploaded-files">
 {{--                                            <div class="uploaded-files-label">Ранее загруженный счет:</div>--}}

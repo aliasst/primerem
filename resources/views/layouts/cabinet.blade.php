@@ -41,7 +41,16 @@
 
 
                     <div class="header-row-right">
-                        
+                        @if (Auth::user()->role == 'superadmin')
+                        <div class="right-menu">
+                            <ul>
+                                <li class="active"><a href="{{route('cabinet.project.create')}}">Добавить проект</a></li>
+                                <li><a href="{{route('cabinet.superuser.create')}}">Добавить админа</a></li>
+                            </ul>
+                        </div>
+                        @endif
+
+
                         <div class="action">
                             <div class="profile" onclick="menuToggle()">
                                 <img

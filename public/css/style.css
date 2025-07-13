@@ -124,6 +124,7 @@ section {
 
 .cabinet-body section{
     overflow: visible;
+    padding-top: 20px;
 }
 
 
@@ -282,7 +283,8 @@ section H3 {
     display: table !important;
     max-width: 352px;
     border-radius: 48.53px;
-    background: linear-gradient(180.00deg, rgb(237, 86, 74), rgb(237, 86, 74) 50%, rgb(237, 86, 74) 96%);
+    /*background: linear-gradient(180.00deg, rgb(237, 86, 74), rgb(237, 86, 74) 50%, rgb(237, 86, 74) 96%);*/
+    background: #ED564A;
     color: rgb(255, 255, 255);
     font-family: Unbounded;
     font-size: 16px;
@@ -295,7 +297,7 @@ section H3 {
     opacity: 1;
     text-decoration: none;
     border: 2px solid transparent;
-    transition: all 0.3s ease-out;
+
 }
 
 .orange-btn-min {
@@ -308,6 +310,19 @@ section H3 {
 .orange-btn-center {
     margin-left: auto;
     margin-right: auto;
+}
+
+.orange-btn:hover {
+    color: rgb(237, 86, 74);
+    background: transparent;
+    border: 2px solid rgb(237, 86, 74);
+}
+
+.orange-btn-min:hover {
+
+    background: transparent;
+    color: rgb(237, 86, 74);
+    border: 2px solid rgb(237, 86, 74);
 }
 
 
@@ -347,7 +362,17 @@ section H3 {
     padding: 17px 23px;
     width: 100%;
     max-width: 268px;
+    transition: all 0.3s ease-out;
 }
+
+.black-link:hover {
+
+    background: rgb(0, 0, 0);
+    color: #fff;
+
+}
+
+
 
 .black-link:focus {
     border: 2px solid rgb(0, 0, 0);
@@ -367,18 +392,7 @@ section H3 {
 }
 
 
-.orange-btn:hover {
-    color: rgb(237, 86, 74);
-    background: transparent;
-    border: 2px solid rgb(237, 86, 74);
-}
 
-.orange-btn-min:hover {
-
-    background: linear-gradient(180.00deg, rgb(237, 86, 74), rgb(237, 86, 74) 50%, rgb(237, 86, 74) 96%);
-    color: rgb(255, 255, 255);
-    opacity: 0.8;
-}
 
 
 .blue-btn:hover, .blue-btn:focus {
@@ -416,6 +430,10 @@ header {
     padding: 3px 0;
     margin-bottom: 70px;
 
+}
+
+.cabinet-body .header-row {
+    margin-bottom: 30px;
 }
 
 .header-row-left {
@@ -1433,14 +1451,55 @@ section.content {
     color: #ff5d94;
 }
 
+
+
+
 .cabinet-header {
     padding-bottom: 0;
+}
+
+.right-menu ul {
+    margin-right:23px;
+}
+
+.right-menu ul li{
+    box-sizing: border-box;
+    border: 1.81px solid rgb(0, 0, 0);
+    border-radius: 31.82px;
+    text-align: center;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+
+}
+
+.right-menu ul li a{
+    display: block;
+    padding: 15px 22px;
+    color: rgb(0, 0, 0);
+    font-family: Unbounded;
+    font-size: 12.46px;
+    font-weight: 400;
+    line-height: 15px;
+    text-decoration: none;
+    transition: all 0.3s ease-out;
+
+
+}
+
+.right-menu ul li:hover {
+    background: rgb(0, 0, 0);
+}
+
+.right-menu ul li:hover a{
+   color: #fff;
 }
 
 
 .back-log {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 40px;
 }
 
 .form-input {
@@ -1662,6 +1721,24 @@ section.content {
     padding: 27px;
     margin-bottom: 27px;
     text-decoration: none;
+    transition: all 0.3s ease-out;
+}
+
+.cabinet-menu-item:hover {
+    /*background: #fff;*/
+    color: #000;
+}
+
+.cabinet-menu-item:hover .menu-item-name {
+    color: #000;
+}
+
+.cabinet-menu-item:hover .menu-item-linc {
+    color: #000;
+}
+
+.cabinet-menu-item:hover .menu-item-ico {
+    /*background: rgb(237, 86, 74);*/
 }
 
 .menu-item-ico {
@@ -1699,6 +1776,7 @@ section.content {
 .progress-section {
     margin-top: -20px;
     margin-bottom: 40px;
+    overflow: hidden;
 }
 
 .progress-cell {
@@ -1721,7 +1799,7 @@ section.content {
 
     background: rgb(237, 86, 74);
     margin: 20px 0;
-    /*overflow: hidden;*/
+    overflow: hidden;
     position: relative;
     border-radius: 1000px;
 }
@@ -1782,11 +1860,16 @@ section.content {
     font-size: 25px;
     font-weight: 400;
     line-height: 42.31px;
-    letter-spacing: 0%;
     text-align: left;
     text-transform: uppercase;
+    transition: all 0.3s ease-out;
 
 }
+.cabinet-menu-superadmin-item-span:hover {
+    color: #DC4A3E;
+}
+
+
 
 
 .requests {
@@ -1825,12 +1908,6 @@ table.requests .btn-link {
     text-decoration: underline;
 }
 
-table.requests .fa {
-    border-radius: 8px;
-    background: rgb(243, 198, 80);
-    padding: 6px;
-}
-
 table.requests th:first-child {
     border-radius: 30px 0 0 0;
     text-align: left;
@@ -1848,7 +1925,21 @@ table.requests td {
     font-weight: 400;
     line-height: 18px;
     text-align: center;
+    border-right: 1.01px solid rgb(207, 169, 71);
 }
+
+table.requests td:last-child {
+    border-right: none;
+}
+
+table.requests  tr:last-child td:last-child {
+    border-right: none!important;
+    border-bottom-right-radius: 30px!important;
+}
+
+
+
+
 
 table.requests td:first-child {
     text-align: left;
@@ -1918,6 +2009,196 @@ table.requests tr:last-child td:last-child {
 }
 
 
+
+
+
+
+.stage-table {
+    margin-bottom: 50px;
+    width: 100%;
+    max-width: 100%;
+    table-layout: fixed;
+    width: 100%; /* Или любая другая ширина по вашему усмотрению */
+}
+
+table.stage-table tr:first-child {
+    text-align: left;
+    max-width: 400px;
+    width:400px;
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
+table.stage-table td {
+    overflow-wrap: break-word;
+    word-break: break-word;
+    white-space:normal;
+}
+
+table.stage-table td a{
+    overflow-wrap: break-word;
+    word-break: break-word;
+    white-space:normal;
+}
+
+
+table.stage-table td:nth-child(1), table.stage-table th:nth-child(1) {
+    text-align: left;
+    width: 30%;
+}
+
+table.stage-table td:nth-child(2), table.stage-table th:nth-child(2) {
+    width: 19%;
+}
+
+table.stage-table td:nth-child(3), table.stage-table th:nth-child(3) {
+    width: 21%;
+}
+
+table.stage-table td:nth-child(4), table.stage-table th:nth-child(4) {
+    width: 17.5%;
+}
+
+table.stage-table td:nth-child(5), table.stage-table th:nth-child(5) {
+    width: 12.5%;
+}
+
+
+table.requests .fa, .stage-table .fa{
+    border-radius: 8px;
+    background: rgb(243, 198, 80);
+    padding: 6px;
+    transition: all 0.1s ease-out;
+}
+
+table.requests .fa:hover, .stage-table .fa:hover{
+    background: rgb(237, 86, 74);
+    color: #fff;
+}
+
+
+
+.stage-table {
+    width: 100%;
+    border: 0px;
+    /* border-collapse: collapse; */
+    border-collapse: separate;
+    /* border-spacing: 0 0.5em; */
+    padding-bottom: 0;
+    background: #FFD66D;
+    border-radius: 30px;
+    box-shadow: 0px 0px 30.23px 0px rgba(0, 0, 0, 0.15);
+}
+
+.stage-table th {
+    padding: 26px 30px;
+    white-space: nowrap;
+    background: rgb(237, 86, 74);
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-family: Unbounded;
+    font-size: 16.14px;
+    font-weight: 400;
+    line-height: 19px;
+
+
+}
+
+.stage-table th:first-child {
+    border-radius: 30px 0 0 0;
+    text-align: left;
+}
+
+.stage-table th:last-child {
+    border-radius: 0 30px 0 0;
+}
+
+.stage-table tr:first-child td {
+    padding-top: 20px;
+}
+
+.stage-table tr:last-child td
+{
+    padding-bottom: 20px;
+}
+
+/*.stage-table tr.status_1 {*/
+/*    background-color: #d9d9d9;*/
+/*}*/
+
+.stage-table tr.status_2 {
+    background-color: #ffff7a;
+}
+
+.stage-table tr.status_3 {
+    background-color: #90ee90;
+}
+
+.stage-table td {
+    padding: 8px 30px;
+    border-right: 1.01px solid rgb(207, 169, 71);
+    color: rgb(0, 0, 0);
+    font-family: Montserrat;
+    font-size: 17.15px;
+    font-weight: 500;
+    line-height: 21px;
+    letter-spacing: 0%;
+    text-align: center;
+}
+
+.stage-table .parent-tr td {
+    font-weight: 600;
+}
+
+
+
+.stage-table td:last-child {
+    border-right: none;
+}
+.stage-table td {
+    color: rgb(0, 0, 0);
+}
+
+.stage-table tr:last-child td:first-child {
+    border-left-style: solid;
+    border-bottom-left-radius: 30px;
+}
+
+.stage-table  tr:last-child td:last-child {
+
+    border-right: none;
+    border-bottom-right-radius: 30px;
+}
+
+.stage-table .btn-link {
+    color: rgb(0, 0, 0);
+    text-decoration: underline;
+}
+
+
+
+
+.check-wrap {
+    position: relative;
+    margin-bottom: 38px;
+}
+.check-wrap-label {
+    position: absolute;
+    z-index: 1;
+    background: rgb(255, 215, 109);
+    left: 50px;
+    top: -17px;
+    padding: 0 13px;
+    color: rgb(56, 56, 56);
+    font-family: Montserrat;
+    font-size: 19px;
+    font-weight: 500;
+    line-height: 35.99px;
+    text-align: left;
+}
+
+
+
 .checkselect {
     position: relative;
     text-align: left;
@@ -1950,7 +2231,7 @@ table.requests tr:last-child td:last-child {
 
 .checkselect-control select {
     position: relative;
-    height: 54px;
+    height: 72px;
 }
 
 .checkselect-over {
@@ -1985,7 +2266,7 @@ table.requests tr:last-child td:last-child {
     left: 0px;
     border: 1px solid #dadada;
     border-top: none;
-    background: #fff;
+    background: rgb(255, 215, 109);
     z-index: 9999;
     overflow: auto;
     user-select: none;
@@ -2086,12 +2367,13 @@ table.requests tr:last-child td:last-child {
 }
 
 .checkselect.checkselect-border .checkselect-control select {
-    border-color: #000;
     font-size: 16px;
     line-height: 27px;
-    border: 1px solid rgb(202, 202, 202);
-    border-radius: 10px;
-    background: #fff;
+    background: transparent;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 21.73px;
+    backdrop-filter: blur(28.23px);
+    padding: 17px 20px;
 }
 
 
@@ -2104,8 +2386,9 @@ table.requests tr:last-child td:last-child {
 }
 
 .checkselect.checkselect-border .checkselect-control.js-active select {
-    border-color: rgb(202, 202, 202);
-    border-radius: 10px 10px 0 0;
+    border-radius: 21.73px 21.73px 0 0;
+    border-color: rgb(0, 0, 0);
+    border-width: 2px;
 }
 
 
@@ -2118,8 +2401,9 @@ table.requests tr:last-child td:last-child {
 }
 
 .checkselect.checkselect-border .checkselect-popup {
-    border-color: rgb(202, 202, 202);
-    border-radius: 0 0 10px 10px;
+    border-radius: 0 0 21.73px 21.73px;
+    border-color: rgb(0, 0, 0);
+    border-width: 2px;
 
 
 }

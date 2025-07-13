@@ -12,29 +12,21 @@
 
             <div class="col-12">
                 <div class="back-log">
-                    <div class="back-link"><a class="btn-link btn-backlink" href="{{route('cabinet.project.show', $project->id)}}">Назад</a>
-                    </div>
-                    <div class="logout-link">
-                        Вы в личном кабинете!
-                        @if (Route::has('logout'))
-                            <a class="btn-link btn-unlogin" href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
-                                                                         document.getElementById('logout-form').submit();">
-                                {{ __('Выйти') }}
-                            </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
-
-                        @endif
+                    <div class="back-link"><a class="btn-link btn-backlink" href="{{route('cabinet.project.show', $project->id)}}">Вернуться назад</a>
                     </div>
                 </div>
 
 
-                <div class="py-5 text-center">
-                    <div class="logo-cell">Prime<span>REM</span></div>
-                    <div class="progress-cell">Статус Ремонта: {{$project->progress}}%</div>
+                <div class=" text-center">
                     <h2>Список счетов проекта {{$project->name}}</h2>
+                </div>
+
+                <div class="progress-section">
+                    <div class="progress-cell">Статус Ремонта: {{round($project->progress, 1)}}%</div>
+
+                    <div class="progress-wrap-m progress-m" data-progress-percent="{{$project->progress}}">
+                        <div class="progress-bar-m progress-m"></div>
+                    </div>
                 </div>
 
                 @include('flash-messages')

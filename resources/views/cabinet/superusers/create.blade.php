@@ -10,28 +10,16 @@
 
             <div class="col-12">
                 <div class="back-log">
-                    <div class="back-link"><a class="btn-link btn-backlink" href="{{ route('cabinet.superuser.index') }}">Назад</a>
+                    <div class="back-link"><a class="btn-link btn-backlink" href="{{ route('cabinet.superuser.index') }}">Вернуться назад</a>
                     </div>
-                    <div class="logout-link">
-                        Вы в личном кабинете!
-                        @if (Route::has('logout'))
-                            <a class="btn-link btn-unlogin" href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
-                                                                         document.getElementById('logout-form').submit();">
-                                {{ __('Выйти') }}
-                            </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
 
-                        @endif
-                    </div>
                 </div>
 
 
-                <div class="py-5 text-center">
-                    <div class="logo-cell " style="margin-bottom: 0">Prime<span>REM</span></div>
-                </div>
+                <div class="card-head-new"> Регистрация нового суперадмина</div>
+                <div class="card-head-new-sub">Заполните данные, чтобы добавить суперадмина</div>
+
+
 
                 @include('flash-messages')
 
@@ -40,21 +28,23 @@
             <div class="col-12 col-md-8">
 
                 <div class="request-card card auth-card">
-                    <div class="card-head"> Cоздание  нового суперадмина</div>
+
 
                     <div class="card-content">
                         <form method="post" action="{{ route('cabinet.superuser.store') }}">
 
                             @csrf
 
-
                             <div class="row mb-3">
-                                <label for="name" class="col-md-5 col-form-label text-md-end">Имя</label>
 
-                                <div class="col-md-6">
-                                    <input id="name" type="text"
-                                           class="form-control @error('name') is-invalid @enderror" name="name"
-                                           value="{{ old('name') ?? '' }}">
+
+                                <div class="col-12">
+                                    <div class="form-input">
+                                        <label for="name" class="">Имя</label>
+                                        <input id="name" type="text"
+                                               class=" @error('name') is-invalid @enderror" name="name"
+                                               value="{{ old('name') ?? '' }}">
+                                    </div>
 
                                     @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -65,13 +55,17 @@
                             </div>
 
 
-                            <div class="row mb-3">
-                                <label for="email" class="col-md-5 col-form-label text-md-end">Email</label>
 
-                                <div class="col-md-6">
-                                    <input id="email" type="email"
-                                           class="form-control @error('email') is-invalid @enderror" name="email"
-                                           value="{{ old('email') }}" autocomplete="email">
+                            <div class="row mb-3">
+
+
+                                <div class="col-12">
+                                    <div class="form-input">
+                                        <label for="name" class="">Email</label>
+                                        <input id="email" type="email"
+                                               class="form-control @error('email') is-invalid @enderror" name="email"
+                                               value="{{ old('email') }}" autocomplete="email">
+                                    </div>
 
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -83,12 +77,15 @@
 
 
                             <div class="row mb-3">
-                                <label for="password" class="col-md-5 col-form-label text-md-end">Пароль</label>
 
-                                <div class="col-md-6">
-                                    <input id="password" type="password"
-                                           class="form-control @error('password') is-invalid @enderror" name="password"
-                                           autocomplete="new-password">
+
+                                <div class="col-12">
+                                    <div class="form-input">
+                                        <label for="name" class="">Пароль</label>
+                                        <input id="password" type="password"
+                                               class="form-control @error('password') is-invalid @enderror" name="password"
+                                               autocomplete="new-password">
+                                    </div>
 
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -98,23 +95,37 @@
                                 </div>
                             </div>
 
-                            <div class="row mb-4">
-                                <label for="password-confirm" class="col-md-5 col-form-label text-md-end">Подтверждение
-                                    пароля</label>
 
-                                <div class="col-md-6">
-                                    <input id="password-confirm" type="password" class="form-control"
-                                           name="password_confirmation" autocomplete="new-password">
+                            <div class="row mb-3">
+
+
+                                <div class="col-12">
+                                    <div class="form-input">
+                                        <label for="name" class="">Подтверждение пароля</label>
+                                        <input id="password-confirm" type="password" class="form-control"
+                                               name="password_confirmation" autocomplete="new-password">
+                                    </div>
+
+                                    @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                             </div>
 
 
+                            <div class="row mb-3">
+                                <div class="col-12">
+                                    <div class="btn-row btn-row-center">
+                                        <button type="submit" class="orange-btn orange-btn-min">
+                                            {{ __('Сохранить') }}
+                                        </button>
+                                    </div>
 
-                            <div class="row mb-2">
-                                <div class="col-md-6 offset-md-5">
-                                    <button type="submit" class="orange-btn orange-btn-min">
-                                        {{ __('Сохранить') }}
-                                    </button>
+
+
+
                                 </div>
                             </div>
 

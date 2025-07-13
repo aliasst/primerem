@@ -100,7 +100,7 @@ class ProjectStageController extends Controller
     {
         $files = $stage->files()->get();
 
-        return view('cabinet.projects.reports.show', compact('project', 'stage', 'files'));
+        return view('cabinet.projects.stages.show', compact('project', 'stage', 'files'));
     }
 
     /**
