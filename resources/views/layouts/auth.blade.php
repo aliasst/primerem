@@ -50,7 +50,7 @@
                             </ul>
                         </div>
 
-                        <div><a href="{{route('login')}}" class="orange-btn orange-btn-min">Кабинет</a></div>
+                        <div class="login-cab"><a href="{{route('login')}}" class="orange-btn orange-btn-min">Кабинет</a></div>
 
                     </div>
 

@@ -2126,11 +2126,11 @@ table.requests .fa:hover, .stage-table .fa:hover{
 /*    background-color: #d9d9d9;*/
 /*}*/
 
-.stage-table tr.status_2 {
+.stage-table tr.status_2 td{
     background-color: #ffff7a;
 }
 
-.stage-table tr.status_3 {
+.stage-table tr.status_3 td{
     background-color: #90ee90;
 }
 
@@ -3325,4 +3325,357 @@ table.requests .fa:hover, .stage-table .fa:hover{
     }
 
 
+}
+
+
+@media screen and (max-width: 769px) {
+
+    #cabinet-header {
+        padding-top: 20px;
+    }
+
+    .header-row {
+        margin-bottom: 40px;
+    }
+
+    .auth-body .header-row-right .header-item.mes-item {
+        margin-right: 0;
+    }
+
+    .auth-body .login-cab {
+        display: none;
+    }
+
+    .header-logo-item, .logo-cell {
+        font-size: 38px;
+        line-height: 38px;
+    }
+
+    .card {
+        margin-top: 35px;
+    }
+
+    .card-head-new {
+        font-size: 30.4px;
+        font-weight: 400;
+        line-height: 44.1px;
+
+    }
+
+    .card-head-new-sub {
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 26.7px;
+        margin-top: 14px;
+    }
+
+
+    .card-content {
+        padding: 32px 27px 32px 27px;
+    }
+
+    .form-input {
+        margin-bottom: 26px;
+    }
+
+    .form-input input {
+        padding: 14px 16px;
+        font-size: 14px;
+        line-height: 20px;
+        border-radius: 17.76px;
+    }
+
+    .form-input label, .check-wrap-label {
+        padding: 0 10px;
+        left: 30px;
+        top: -10px;
+        padding: 0 13px;
+        font-size: 15px;
+        font-weight: 500;
+        line-height: 20px;
+    }
+
+    .btn-row {
+        display: block;
+        margin-top: -10px;
+    }
+
+    .btn-row-login {
+        padding: 0 0;
+    }
+
+    .btn-row .orange-btn {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .btn-row-login .orange-btn {
+        margin-bottom: 15px;
+    }
+
+    .orange-btn {
+        font-size: 13.37px;
+        font-weight: 400;
+        line-height: 16px;
+        padding: 15px 10px;
+
+    }
+
+    .black-link {
+        font-size: 13.37px;
+        font-weight: 400;
+        line-height: 16px;
+        padding: 15px 10px;
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .foot-item.mes-item {
+        width: auto;
+    }
+
+    .right-menu {
+        display: none;
+    }
+
+    .cabinet-menu-superadmin {
+        display: block;
+
+    }
+
+    .cabinet-menu-superadmin-item-img {
+        width: 100%;
+        height: auto;
+        position: relative;
+        border-radius: 20px;
+        margin-bottom: 20px;
+    }
+
+    .cabinet-menu-superadmin-item {
+        margin-bottom: 40px;
+        display: block;
+    }
+
+    .cabinet-menu-superadmin-item-span {
+        font-size: 20.9px;
+        font-weight: 400;
+        line-height: 35.36px;
+        text-transform: uppercase;
+    }
+
+    table.requests td:first-child {
+        border-radius: 17.86px 17.86px 0px 0px;
+        background-color: rgb(237, 86, 74) !important;
+        color: #fff;
+        border-bottom: 0 !important;
+        padding: 15px 18px;
+    }
+
+    table.requests tr:first-child td {
+        padding-top: 15px;
+    }
+
+    table.requests {
+        background: #F3C650;
+        box-shadow: none;
+    }
+
+    table.requests tr {
+        margin-bottom: 40px;
+        box-shadow: 0px 0px 30.23px 0px rgba(0, 0, 0, 0.15);
+
+    }
+
+    table.requests td:last-child {
+        border-right-style: solid;
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+        border-right: 0;
+    }
+
+    table.requests td {
+        font-size: 14.1px;
+        font-weight: 500;
+        line-height: 17px;
+        padding: 10px 18px;
+
+    }
+
+    table.requests td:before {
+        font-weight: bold;
+        font-size: 14.1px;
+        line-height: 17px;
+    }
+
+    table.requests td:first-child .btn-link {
+        color: #fff;
+        text-decoration: underline;
+        text-align: center;
+    }
+
+    table.requests td:first-child {
+    display: block;
+    text-align: right;
+        font-size: 14.1px;
+        font-weight: 500;
+        line-height: 17px;
+}
+
+    table.requests tr:last-child td:first-child {
+        border-bottom-left-radius: 0;
+    }
+
+    table.requests tr:last-child {
+        margin-bottom: 0;
+    }
+
+    .btn-backlink {
+        color: rgb(0, 0, 0);
+        font-size: 15.24px;
+        font-weight: 500;
+        line-height: 19px;
+    }
+
+    .cabinet-body .header-row {
+        margin-bottom: 0px;
+    }
+
+    .progress-cell {
+        font-size: 15px;
+        line-height: 19px;
+        text-align: left;
+        margin-bottom: 16px;
+    }
+
+    .progress-section {
+        margin-top: -20px;
+        margin-bottom: 20px;
+    }
+
+    .cabinet-menu-item {
+        width: 100%;
+        border-radius: 18.45px 36.9px 18.45px 18.45px;
+        background: rgb(237, 86, 74);
+        padding: 23px;
+    }
+
+    .menu-item-name {
+        font-size: 15.68px;
+        font-weight: 400;
+        line-height: 19px;
+        margin-bottom: 9px;
+    }
+
+    .menu-item-linc {
+        font-size: 12.92px;
+        line-height: 16px;
+    }
+
+    .check-wrap {
+        margin-bottom: 20px;
+    }
+
+    .checkselect.checkselect-border .checkselect-control select {
+        padding: 14px 16px;
+        font-size: 14px;
+        line-height: 20px;
+        border-radius: 17.76px;
+    }
+
+    .checkselect.checkselect-border .checkselect-popup {
+        border-radius: 17.76px;
+    }
+
+    .checkselect-control select {
+        height: 52px;
+
+    }
+
+    .checkselect-control .accord-ico {
+
+        bottom: 0;
+        right: 15px;
+    }
+
+    .my-btn span {
+        line-height: 24px;
+        font-size: 16px;
+    }
+
+    .uploaded-files a  {
+        line-height: 24px;
+        font-size: 16px;
+    }
+
+    .btn-link {
+        line-height: 24px;
+        font-size: 16px;
+    }
+
+    .file-form-wrap {
+        margin-bottom: 20px;
+    }
+
+
+.stage-table-wrap  {
+
+    }
+
+    .stage-table-wrap  table{
+        overflow: hidden;
+        overflow-x:scroll;
+        display: inline-block;
+    }
+
+
+    .stage-table td {
+        font-size: 14.1px;
+        font-weight: 500;
+        line-height: 17px;
+        padding: 10px 18px;
+        background: #FFD66D;
+    }
+
+    .stage-table th {
+        font-size: 14.1px;
+        font-weight: 500;
+        line-height: 17px;
+        padding: 15px 18px;
+    }
+
+    .stage-table th:first-child {
+        border-radius: 19px 0 0 0;
+    }
+
+    .stage-table th:last-child {
+        border-radius: 0 19px 0 0;
+    }
+
+
+    .stage-table {
+        border-radius: 19px 0 0 19px;
+
+    }
+
+    .stage-table  .btn-link {
+        font-size: 14px;
+    }
+
+    .stage-table {
+
+        background:transparent;
+        box-shadow: none;
+
+
+}
+
+
+
+
+
+@media screen and (max-width: 379px) {
+    .card-head-new {
+        font-size: 24px;
+        line-height: 31px;
+    }
 }

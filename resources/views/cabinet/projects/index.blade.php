@@ -34,7 +34,7 @@
                         <table class="requests">
                             <thead>
                             <tr>
-                                <th>Название или id</th>
+                                <th>Название</th>
                                 <th>Дата создания</th>
                                 <th>Активность</th>
                                 <th>Пользователи</th>
@@ -46,7 +46,7 @@
                             @foreach($projects as  $project)
 
                                 <tr class="">
-                                    <td aria-label="Название или id"><a style="white-space: nowrap" class="btn-link"
+                                    <td aria-label="Название"><a style="white-space: nowrap" class="btn-link"
                                                                         href="{{route ('cabinet.project.show', $project->id)}}">{{ $project->name  ??  $project->id}}</a>
                                     </td>
                                     <td aria-label="Дата создания">{{ $project->created_at->format('d.m.Y') }}</td>

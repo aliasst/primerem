@@ -38,6 +38,7 @@
 
                         <h3 class="text-center mt-4">Отчетов нет</h3>
                     @else
+                        <div class="stage-table-wrap">
 
                         @foreach($stages as  $stage)
 
@@ -115,6 +116,7 @@
                             </table>
 
                         @endforeach
+                        </div>
 
                     @endif
 
