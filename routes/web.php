@@ -1,8 +1,12 @@
 <?php
 
+use App\Http\Controllers\ForgotPasswordController;
+use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\Cabinet\DashboardController;
+use App\Http\Controllers\Cabinet\ProfileController;
 use App\Http\Controllers\Cabinet\ProjectActController;
 use App\Http\Controllers\Cabinet\ProjectContractorController;
+use App\Http\Controllers\Cabinet\ProjectFileController;
 use App\Http\Controllers\Cabinet\ProjectInvoiceController;
 use App\Http\Controllers\Cabinet\ProjectController;
 use App\Http\Controllers\Cabinet\ProjectPurchaseController;
@@ -32,6 +36,14 @@ Route::controller(\App\Http\Controllers\RegisterController::class)->middleware([
     Route::post('register', 'register')->name('register');
 });
 
+Route::get('/password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request')->middleware('only-guest');
+
+
+Route::get('/password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+Route::post('/password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
+
+Route::post('/password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+
 
 Route::controller(\App\Http\Controllers\AuthController::class)->group(function() {
 //    Route::get('login', 'index')->name('login');
@@ -51,6 +63,9 @@ Route::controller(\App\Http\Controllers\AuthController::class)->group(function()
 
 
 Route::prefix('cabinet')->middleware(['only-auth'])->group(function (){
+    Route::get('/profile', [ProfileController::class, 'index'])->name('cabinet.profile');
+    Route::put('/profile/{user}', [ProfileController::class, 'update'])->name('cabinet.profile.update');
+
     Route::get('/', [DashboardController::class, 'index'])->name('cabinet.dashboard');
 
     Route::get('/projects', [ProjectController::class, 'index'])->name('cabinet.project.index');
@@ -129,5 +144,9 @@ Route::prefix('cabinet')->middleware(['only-auth'])->group(function (){
     Route::get('/projects/{project}/purchases/{purchase}/edit', [ProjectPurchaseController::class, 'edit'])->name('cabinet.project.purchase.edit');
     Route::put('/projects/{project}/purchases/{purchase}', [ProjectPurchaseController::class, 'update'])->name('cabinet.project.purchase.update');
     Route::delete('/projects/{project}/purchases/{purchase}', [ProjectPurchaseController::class, 'destroy'])->name('cabinet.project.purchase.destroy');
+
+
+    Route::get('/delete-stage-file/{id}', [ProjectFileController::class, 'deleteStageFile']);
+    Route::get('/delete-purchase-file/{id}', [ProjectFileController::class, 'deletePurchaseFile']);
 
 });

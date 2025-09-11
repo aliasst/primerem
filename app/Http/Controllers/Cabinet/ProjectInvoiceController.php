@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Invoice;
 use App\Models\InvoiceFile;
 use App\Models\Project;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -14,10 +15,36 @@ class ProjectInvoiceController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Project $project)
+    public function index(Request $request, Project $project)
     {
-        $invoices = Invoice::where('project_id', $project->id)->with('files')->get();
-        return view('cabinet.projects.invoices.index', compact( 'invoices', 'project'));
+        $validated = $request->validate([
+            'sort' => ['nullable', 'string'],
+        ]);
+
+        $sort = $request->input('sort');
+//        dd($sort);
+        $sortCurrent = 'Дате создания';
+        if($sort == 'invoice_number') {
+            $sortCurrent = 'Номеру счета';
+        }
+        if($sort == 'updated_at') {
+            $sortCurrent = 'Дате изменения';
+        }
+
+
+
+        $invoices = Invoice::query()
+            ->when($validated['sort'] ?? null, function (Builder $query, string $sort) {
+                $query->orderBy($sort, 'desc');
+            })
+            ->where('project_id', $project->id)
+            ->with('files')
+            ->get();
+
+
+
+//        $invoices = Invoice::where('project_id', $project->id)->with('files')->get();
+        return view('cabinet.projects.invoices.index', compact( 'invoices', 'project', 'sortCurrent'));
     }
 
     /**

@@ -6,16 +6,45 @@ use App\Http\Controllers\Controller;
 use App\Models\Contractor;
 use App\Models\Project;
 use App\Models\Purchase;
+use App\Models\PurchaseFile;
 use App\Models\Stage;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectPurchaseController extends Controller
 {
-    public function index(Project $project)
+    public function index(Request $request, Project $project)
     {
-        $purchases = Purchase::where('project_id', $project->id)->get();
 
-        return view('cabinet.projects.purchases.index', compact('purchases', 'project'));
+        $validated = $request->validate([
+            'sort' => ['nullable', 'string'],
+        ]);
+
+        $sort = $request->input('sort');
+//        dd($sort);
+        $sortCurrent = 'Дате создания';
+        if($sort == 'title') {
+            $sortCurrent = 'Названию';
+        }
+        if($sort == 'updated_at') {
+            $sortCurrent = 'Дате изменения';
+        }
+
+
+
+        $purchases = Purchase::query()
+            ->when($validated['sort'] ?? null, function (Builder $query, string $sort) {
+                $query->orderBy($sort, 'desc');
+            })
+            ->where('project_id', $project->id)
+//            ->with('files')
+            ->get();
+
+
+//        $purchases = Purchase::where('project_id', $project->id)->get();
+
+        return view('cabinet.projects.purchases.index', compact('purchases', 'project', 'sortCurrent'));
     }
 
     /**
@@ -42,16 +71,47 @@ class ProjectPurchaseController extends Controller
             'stage_id' => ['required', 'string'],
             'comments' => ['string', 'nullable'],
             'purchase_date' => ['date', 'nullable'],
+            'file-purchase' => ['max:2048', 'nullable'],
 
         ]);
+
+
 
 
         $validated['user_id'] = auth()->user()->id;
         $validated['project_id'] = $project->id;
 
-        $status = Purchase::create($validated);
+        $purchase = Purchase::create($validated);
 
-        if($status) {
+        if ($request->hasfile('file-purchase')) {
+            foreach ($request->file('file-purchase') as $file) {
+
+                $name = $file->getClientOriginalName();
+                $nameTrimmed = str_replace(' ', '', $name);
+                $path = '/projects/' . $project->id . '/purchases/' . $purchase->id . '/';
+
+                $file_data = [
+                    'purchase_id' => $purchase->id,
+                    'user_id' => auth()->user()->id,
+                    'project_id' => $project->id,
+                    'name' => $name,
+                    'file_path' => '/storage' . $path . $nameTrimmed,
+                    'storage_path' => $path . $nameTrimmed,
+                    'mime_type' => $file->getClientMimeType(),
+                    'extension' => $file->getClientOriginalExtension(),
+                ];
+
+                Storage::disk('public')->put($path . $nameTrimmed, $file->getContent());
+
+                $file = PurchaseFile::updateOrCreate([
+                    'name' => $name
+                ], $file_data);
+            }
+
+        }
+
+
+        if($purchase) {
             request()->session()->flash('success', 'Закупка добавлена!');
         } else {
             request()->session()->flash('error', 'Ошибка!!!');
@@ -67,7 +127,9 @@ class ProjectPurchaseController extends Controller
      */
     public function show(Project $project, Purchase $purchase)
     {
-        return view('cabinet.projects.purchases.show', compact('purchase',  'project' ));
+        $files = $purchase->files()->get();
+
+        return view('cabinet.projects.purchases.show', compact('purchase',  'project', 'files' ));
     }
 
     /**
@@ -75,13 +137,14 @@ class ProjectPurchaseController extends Controller
      */
     public function edit(Project $project, Purchase $purchase)
     {
+        $files = $purchase->files()->get();
 
         $stages = Stage::whereNull('stage_id')
             ->where('project_id', $project->id)
             ->with('child_stages')
             ->get();
 
-        return view('cabinet.projects.purchases.edit', compact('purchase',  'project', 'stages' ));
+        return view('cabinet.projects.purchases.edit', compact('purchase',  'project', 'stages', 'files'));
     }
 
     /**
@@ -95,11 +158,41 @@ class ProjectPurchaseController extends Controller
             'stage_id' => ['required', 'string'],
             'comments' => ['string', 'nullable'],
             'purchase_date' => ['date', 'nullable'],
+            'file-purchase' => ['max:2048', 'nullable'],
         ]);
 
 
 
         $status = $purchase->update($validated);
+
+
+        if ($request->hasfile('file-purchase')) {
+            foreach ($request->file('file-purchase') as $file) {
+
+                $name = $file->getClientOriginalName();
+                $nameTrimmed = str_replace(' ', '', $name);
+                $path = '/projects/' . $project->id . '/purchases/' . $purchase->id . '/';
+
+                $file_data = [
+                    'purchase_id' => $purchase->id,
+                    'user_id' => auth()->user()->id,
+                    'project_id' => $project->id,
+                    'name' => $name,
+                    'file_path' => '/storage' . $path . $nameTrimmed,
+                    'storage_path' => $path . $nameTrimmed,
+                    'mime_type' => $file->getClientMimeType(),
+                    'extension' => $file->getClientOriginalExtension(),
+                ];
+
+                Storage::disk('public')->put($path . $nameTrimmed, $file->getContent());
+
+                $file = PurchaseFile::updateOrCreate([
+                    'name' => $name
+                ], $file_data);
+            }
+
+        }
+
 
         if ($status) {
             request()->session()->flash('success', 'Закупка обновлена!');

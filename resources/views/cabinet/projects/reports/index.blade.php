@@ -45,7 +45,7 @@
                             <table class="stage-table">
                                 <thead>
                                 <tr>
-                                    <th>Название этапа</th>
+                                    <th>Название <span>этапа</span></th>
                                     <th>Дата старта</th>
                                     <th>Дата завершения</th>
                                     <th>Статус</th>
@@ -87,7 +87,7 @@
                                     <tr class="child-tr {{$child_stage->status}}">
                                         <td style="padding-left:50px;" aria-label="Название этапа"><a style=""
                                                                                                       class="btn-link"
-                                                                                                      href="{{route ('cabinet.project.report.show', [$project->id, $child_stage->id])}}">- {{ $child_stage->title}}</a>
+                                                                                                      href="{{route ('cabinet.project.report.show', [$project->id, $child_stage->id])}}">{{ $child_stage->title}}</a>
                                         </td>
                                         <td aria-label="Дата старта">{{ $child_stage->start_date ? $child_stage->start_date->format('d.m.Y') : '' }}</td>
                                         <td aria-label="Дата завершения">{{ $child_stage->finish_date ? $child_stage->finish_date->format('d.m.Y') : '' }}</td>

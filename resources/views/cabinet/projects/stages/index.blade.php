@@ -46,7 +46,7 @@
                             <table class="stage-table">
                                 <thead>
                                 <tr>
-                                    <th>Название этапа</th>
+                                    <th>Название <span>этапа</span></th>
                                     <th>Дата старта</th>
                                     <th>Дата завершения</th>
                                     <th>Статус</th>

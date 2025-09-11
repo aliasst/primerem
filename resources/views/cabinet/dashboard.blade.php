@@ -33,7 +33,7 @@
 
                         <a href="{{route('cabinet.superuser.index')}}" class="cabinet-menu-superadmin-item">
                             <div class="cabinet-menu-superadmin-item-img"><img class=""
-                                                                               src="{{url('/img/admin.svg')}}"
+                                                                               src="{{url('/img/admin3.svg')}}"
                                                                                alt=""/></div>
                             <div class="cabinet-menu-superadmin-item-span"> Главные админы</div>
                         </a>

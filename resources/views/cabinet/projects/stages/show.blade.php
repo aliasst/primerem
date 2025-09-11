@@ -136,14 +136,43 @@
                                     @if(!$files->isEmpty())
                                         <div class="uploaded-files">
                                             {{--                                            <div class="uploaded-files-label">Ранее загруженный счет:</div>--}}
-                                            <div class="uploaded-files-inner-wrap">
+                                            <div class="uploaded-files-inner-wrap img-upload-row">
                                                 @foreach($files as $file)
-                                                    <div class="uploaded-file" id="{{$file->id}}">
-                                                        <a style="text-decoration: underline" target="_blank"
-                                                           href="{{ Storage::disk('public')->url($file->storage_path) }}">{{$file->name}}</a>
-                                                    </div>
 
+                                                    @if(in_array($file->extension, ['jpg', 'jpeg', 'png'])  )
+
+                                                        <div class="uploaded-file uploaded-img" id="{{$file->id}}">
+                                                            <a       class="uploaded-img-link"
+                                                                     data-fancybox="gallery"
+                                                                     data-src="{{ Storage::disk('public')->url($file->storage_path) }}"
+                                                                     data-caption=""
+                                                            >
+                                                                <img
+                                                                    src="{{ Storage::disk('public')->url($file->storage_path) }}"
+                                                                    width="100" alt=""/>
+                                                            </a>
+
+
+
+                                                        </div>
+                                                    @endif
                                                 @endforeach
+                                            </div>
+
+                                            <div class="uploaded-files-inner-wrap doc-upload-row">
+
+                                                @foreach($files as $file)
+
+                                                    @if(!in_array($file->extension, ['jpg', 'jpeg', 'png'])  )
+                                                        <div class="uploaded-file" id="{{$file->id}}">
+                                                            <a style="text-decoration: underline" target="_blank"--}}
+                                                               href="{{ Storage::disk('public')->url($file->storage_path) }}">{{$file->name}}</a>
+                                                        </div>
+                                                    @else
+
+                                                    @endif
+                                                @endforeach
+
                                             </div>
 
                                         </div>

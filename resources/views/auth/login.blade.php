@@ -68,7 +68,7 @@
 
 
 
-                            <div class="row mb-3">
+                            <div class="row mb-4">
                                 <div class="col-12">
                                     <div class="btn-row btn-row-login">
                                         <button type="submit" class="orange-btn orange-btn-min">
@@ -88,6 +88,17 @@
 
 
                                 </div>
+                            </div>
+
+
+                            <div class="row">
+                            <div class="col-12 " style="">
+                                <div style="" class="forget-link text-center">
+                                    <a class="btn-link" href="{{ route('password.request') }}">
+                                        Забыли пароль?
+                                    </a>
+                                </div>
+                            </div>
                             </div>
 
 

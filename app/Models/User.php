@@ -30,6 +30,8 @@ class User extends Authenticatable
         'role',
         'status',
         'project_id',
+        'avatar_file_path',
+        'avatar_storage_path',
     ];
 
     /**

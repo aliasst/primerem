@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.14.1/themes/base/jquery-ui.min.css"/>
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.0/dist/fancybox/fancybox.css"
+    />
 
     <link rel="stylesheet" href="/css/style.css@php echo '?'.mt_rand()@endphp"/>
     <meta property="og:type" content="website"/>
@@ -42,31 +46,41 @@
 
                     <div class="header-row-right">
                         @if (Auth::user()->role == 'superadmin')
-                        <div class="right-menu">
-                            <ul>
-                                <li class="active"><a href="{{route('cabinet.project.create')}}">Добавить проект</a></li>
-                                <li><a href="{{route('cabinet.superuser.create')}}">Добавить админа</a></li>
-                            </ul>
-                        </div>
+                            <div class="right-menu">
+                                <ul>
+                                    <li class="active"><a href="{{route('cabinet.project.create')}}">Добавить проект</a>
+                                    </li>
+                                    <li><a href="{{route('cabinet.superuser.create')}}">Добавить админа</a></li>
+                                </ul>
+                            </div>
                         @endif
 
 
                         <div class="action">
                             <div class="profile" onclick="menuToggle()">
                                 <img
-                                    src="{{url('/img/avatar.png')}}">
+                                    @if(Auth::user()->avatar_storage_path)
+                                        src="{{ Storage::disk('public')->url(Auth::user()->avatar_storage_path) }}"
+                                    @else
+                                        src="{{url('/img/avatar.png')}}"
+                                    @endif
+
+
+                                >
+                                <i class="menu-accord-ico"></i>
                             </div>
                             <div class="menu">
 
                                 <ul>
-                                    <li><a href="">Профиль</a></li>
+                                    <li><a href="{{route('cabinet.profile')}}">Профиль</a></li>
                                     @if (Route::has('logout'))
                                         <li><a class="btn-link btn-unlogin" href="{{ route('logout') }}"
-                                           onclick="event.preventDefault();
+                                               onclick="event.preventDefault();
                                                                          document.getElementById('logout-form').submit();">
-                                            {{ __('Выйти') }}
-                                        </a></li>
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                                {{ __('Выйти') }}
+                                            </a></li>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                              class="d-none">
                                             @csrf
                                         </form>
 
@@ -144,6 +158,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.14.1/jquery-ui.min.js"></script>
 <script src="/js/datepicker-ru.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.0/dist/fancybox/fancybox.umd.js"></script>
 <script src="/js/scripts.js?v=2.01"></script>
 
 </body>

@@ -29,6 +29,24 @@
                     </div>
                 </div>
 
+                <div class="action action-sort action-sort-min">
+                    <span class="stitle">Сортировать по: </span>
+                    <div class="sort-active" >
+                        <span>{{$sortCurrent}}</span>
+                        <i class="mobi-accord-ico"></i>
+                        <div class="menu">
+                            <ul id="sort-list">
+                                <li data-sort="act_number">По номеру акта</li>
+                                <li data-sort="created_at">По дате создания</li>
+                                <li data-sort="updated_at">По дате изменения</li>
+                            </ul>
+
+                        </div>
+                    </div>
+
+
+                </div>
+
                 @include('flash-messages')
             </div>
             <div class="col-12">

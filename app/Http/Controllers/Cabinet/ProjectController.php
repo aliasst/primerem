@@ -7,6 +7,7 @@ use App\Models\Contractor;
 use App\Models\Project;
 use App\Models\Purchase;
 use App\Models\Stage;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -14,11 +15,36 @@ class ProjectController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $projects = Project::all();
 
-        return view('cabinet.projects.index', compact('projects'));
+        $validated = $request->validate([
+            'sort' => ['nullable', 'string'],
+        ]);
+
+        $sort = $request->input('sort');
+//        dd($sort);
+        $sortCurrent = 'Дате создания';
+        if($sort == 'name') {
+            $sortCurrent = 'Названию';
+        }
+        if($sort == 'updated_at') {
+            $sortCurrent = 'Дате изменения';
+        }
+
+
+
+        $projects = Project::query()
+            ->when($validated['sort'] ?? null, function (Builder $query, string $sort) {
+                $query->orderBy($sort, 'desc');
+            })
+            ->get();
+
+
+
+//        $projects = Project::all();
+
+        return view('cabinet.projects.index', compact('projects', 'sortCurrent'));
     }
 
     /**

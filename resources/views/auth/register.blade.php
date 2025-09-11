@@ -33,7 +33,7 @@
                                         <input id="name" type="text"
                                                class=" @error('name') is-invalid @enderror"
                                                name="name"
-                                               value="{{ old('name') }}" required >
+                                               value="{{ old('name') }}" required>
                                     </div>
 
                                     @error('name')
@@ -66,39 +66,24 @@
                             </div>
 
 
+                            <div class="row mb-3">
 
 
+                                <div class="col-12">
+                                    <div class="form-input">
+                                        <label for="password" class="">Пароль *</label>
+                                        <input id="password" type="password"
+                                               class="form-control @error('password') is-invalid @enderror"
+                                               name="password" required autocomplete="current-password">
+                                    </div>
 
-
-
-                                                        <div class="row mb-3">
-
-
-                                                            <div class="col-12">
-                                                                <div class="form-input">
-                                                                    <label for="password" class="">Пароль *</label>
-                                                                    <input id="password" type="password"
-                                                                           class="form-control @error('password') is-invalid @enderror"
-                                                                           name="password" required autocomplete="current-password">
-                                                                </div>
-
-                                                                @error('password')
-                                                                <span class="invalid-feedback" role="alert">
+                                    @error('password')
+                                    <span class="invalid-feedback" role="alert">
                                                                     <span>{{ $message }}</span>
                                                                 </span>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-
-
-
-
-
-
-
-
-
-
+                                    @enderror
+                                </div>
+                            </div>
 
 
                             <div class="row mb-3">
@@ -114,7 +99,20 @@
                                 </div>
                             </div>
 
+                            <div class="row mb-3">
 
+
+                                <div class="col-12">
+                                    <div class="form-input">
+                                        <label class="docs-send_popup-checkbox">
+                                            <input type="checkbox" class="docs-send_popup-checkbox-input" checked>
+                                            <span class="docs-send_popup-checkbox-text">
+               Я ознакомлен(а) и соглашаюсь с <a href="/" target="_blank">Политикой конфиденциальности</a>.
+               </span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
 
 
                             <div class="row mb-3">
@@ -124,8 +122,6 @@
                                             {{ __('Зарегистрироваться') }}
                                         </button>
                                     </div>
-
-
 
 
                                 </div>

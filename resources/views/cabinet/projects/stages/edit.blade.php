@@ -11,7 +11,9 @@
 
             <div class="col-12">
                 <div class="back-log">
-                    <div class="back-link"><a class="btn-link btn-backlink" href="{{ route('cabinet.project.stage.index',  [$project->id]) }}">Вернуться назад</a>
+                    <div class="back-link"><a class="btn-link btn-backlink"
+                                              href="{{ route('cabinet.project.stage.index',  [$project->id]) }}">Вернуться
+                            назад</a>
                     </div>
 
                 </div>
@@ -102,15 +104,13 @@
                             </div>
 
 
-
-
                             <div class="row mb-3">
 
 
                                 <div class="col-12">
                                     <div class="form-input">
                                         <label for="start_date" class="">Дата старта</label>
-                                        <input id="start_date"  type="text"
+                                        <input id="start_date" type="text"
                                                class="datepicker form-control date-input @error('start_date') is-invalid @enderror"
                                                name="start_date"
                                                value="{{  $stage->start_date ? $stage->start_date->format('d.m.Y') : '' }}"
@@ -127,14 +127,13 @@
                             </div>
 
 
-
                             <div class="row mb-3">
 
 
                                 <div class="col-12">
                                     <div class="form-input">
                                         <label for="finish_date" class="">Дата завершения</label>
-                                        <input id="finish_date"  type="text"
+                                        <input id="finish_date" type="text"
                                                class="datepicker form-control date-input @error('finish_date') is-invalid @enderror"
                                                name="finish_date"
                                                value="{{  $stage->finish_date ? $stage->finish_date->format('d.m.Y') : '' }}"
@@ -171,9 +170,6 @@
                             </div>
 
 
-
-
-
                             <div class="row mb-3">
 
 
@@ -181,14 +177,43 @@
                                     @if(!$files->isEmpty())
                                         <div class="uploaded-files">
                                             {{--                                            <div class="uploaded-files-label">Ранее загруженный счет:</div>--}}
-                                            <div class="uploaded-files-inner-wrap">
+                                            <div class="uploaded-files-inner-wrap img-upload-row">
                                                 @foreach($files as $file)
-                                                    <div class="uploaded-file" id="{{$file->id}}">
-                                                        <a style="text-decoration: underline" target="_blank"
-                                                           href="{{ Storage::disk('public')->url($file->storage_path) }}">{{$file->name}}</a>
-                                                    </div>
 
+                                                        @if(in_array($file->extension, ['jpg', 'jpeg', 'png'])  )
+
+                                                        <div class="uploaded-file uploaded-img" id="{{$file->id}}">
+                                                        <a       class="uploaded-img-link"
+                                                                data-fancybox="gallery"
+                                                                data-src="{{ Storage::disk('public')->url($file->storage_path) }}"
+                                                                data-caption=""
+                                                            >
+                                                                <img
+                                                                    src="{{ Storage::disk('public')->url($file->storage_path) }}"
+                                                                    width="100" alt=""/>
+                                                            </a>
+                                                            <div> <a class="btn-link js-delete-stage-file" href="#" data-id="{{$file->id}}">Удалить</a></div>
+
+
+                                                        </div>
+                                                        @endif
                                                 @endforeach
+                                            </div>
+
+                                            <div class="uploaded-files-inner-wrap doc-upload-row">
+
+                                                    @foreach($files as $file)
+
+                                                        @if(!in_array($file->extension, ['jpg', 'jpeg', 'png'])  )
+                                                            <div class="uploaded-file" id="{{$file->id}}">
+                                                                <a style="text-decoration: underline" target="_blank"--}}
+                                                                   href="{{ Storage::disk('public')->url($file->storage_path) }}">{{$file->name}}</a> (<a class="btn-link js-delete-stage-file" href="#" data-id="{{$file->id}}">Удалить</a>)
+                                                            </div>
+                                                        @else
+
+                                                        @endif
+                                                    @endforeach
+
                                             </div>
 
                                         </div>
@@ -228,9 +253,6 @@
                             </div>
 
 
-
-
-
                             <div class="row mb-3">
                                 <div class="col-12">
                                     <div class="btn-row btn-row-center">
@@ -247,7 +269,8 @@
 
                         <div class="row mt-3">
                             <div class="col-12 text-center">
-                                <form action="{{ route('cabinet.project.stage.destroy',  [$project->id, $stage->id]) }}" method="POST"
+                                <form action="{{ route('cabinet.project.stage.destroy',  [$project->id, $stage->id]) }}"
+                                      method="POST"
                                       onsubmit="return confirm('Вы точно хотите удалить этот этап?');">
                                     @csrf
                                     @method('DELETE')

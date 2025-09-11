@@ -161,6 +161,34 @@
 
 
                             <div class="row mb-3">
+                                <label for="file-purchase" class="col-12 col-form-label text-md-end"></label>
+
+                                <div class="col-md-6">
+                                    <div class="files-main-wrap">
+                                        <div class="file-form-wrap">
+
+                                            <div class="file-upload my-btn">
+                                                <label>
+                                                    <input class="fl_inp " type="file" name="file-purchase[]">
+                                                    <span>Добавить файл</span>
+                                                </label>
+                                            </div>
+                                            <div class="file-name"></div>
+                                        </div>
+                                    </div>
+
+                                    @error('file-purchase')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+
+
+
+                            <div class="row mb-3">
                                 <div class="col-12">
                                     <div class="btn-row btn-row-center">
                                         <button type="submit" class="orange-btn orange-btn-min">

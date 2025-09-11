@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Cabinet;
 use App\Http\Controllers\Controller;
 use App\Models\Act;
 use App\Models\ActFile;
+use App\Models\Invoice;
 use App\Models\Project;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -14,10 +16,36 @@ class ProjectActController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Project $project)
+    public function index(Request $request, Project $project)
     {
-        $acts = Act::where('project_id', $project->id)->with('files')->get();
-        return view('cabinet.projects.acts.index', compact( 'acts', 'project'));
+
+        $validated = $request->validate([
+            'sort' => ['nullable', 'string'],
+        ]);
+
+        $sort = $request->input('sort');
+//        dd($sort);
+        $sortCurrent = 'Дате создания';
+        if($sort == 'act_number') {
+            $sortCurrent = 'Номеру акта';
+        }
+        if($sort == 'updated_at') {
+            $sortCurrent = 'Дате изменения';
+        }
+
+
+
+        $acts = Act::query()
+            ->when($validated['sort'] ?? null, function (Builder $query, string $sort) {
+                $query->orderBy($sort, 'desc');
+            })
+            ->where('project_id', $project->id)
+            ->with('files')
+            ->get();
+
+
+//        $acts = Act::where('project_id', $project->id)->with('files')->get();
+        return view('cabinet.projects.acts.index', compact( 'acts', 'project', 'sortCurrent'));
     }
 
     /**

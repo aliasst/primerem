@@ -1,10 +1,68 @@
+
+Fancybox.bind('[data-fancybox="gallery"]', {
+    //
+});
+
+
+
+
 function menuToggle() {
     const toggleMenu = document.querySelector('.menu');
+    const toggleMenuicon = document.querySelector('.menu-accord-ico');
     toggleMenu.classList.toggle('active');
+    toggleMenuicon.classList.toggle('open');
 }
 
 
 (function ($) {
+
+
+    $(".js-delete-stage-file").on('click', function(e) {
+        e.preventDefault();
+        var item = $(this);
+        var id = item.attr('data-id');
+
+
+
+        $.ajax({
+            url: "/cabinet/delete-stage-file/" + id,
+            type: 'get',
+            success: function () {
+                item.closest('.uploaded-file').remove();
+
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+
+    });
+
+
+
+    $(".js-delete-purchase-file").on('click', function(e) {
+        e.preventDefault();
+        var item = $(this);
+        var id = item.attr('data-id');
+
+
+
+        $.ajax({
+            url: "/cabinet/delete-purchase-file/" + id,
+            type: 'get',
+            success: function () {
+                item.closest('.uploaded-file').remove();
+
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+
+    });
+
+
+
 
 
 
@@ -12,6 +70,15 @@ function menuToggle() {
 
     $(document).ready(function () {
 
+
+
+
+        $(document).on('click', '.sort-active', function () {
+           const sortToggleMenu = $(this).find('.menu');
+            sortToggleMenu.toggleClass('active');
+            $(this).toggleClass('open');
+
+        });
 
 
 
@@ -279,3 +346,14 @@ function menuToggle() {
 
 
 })(jQuery);
+
+if(document.getElementById('sort-list')!= null) {
+    document.getElementById('sort-list').addEventListener('click', function (event) {
+        // Проверяем, что был клик именно по li
+        if (event.target.tagName === 'LI') {
+            const sortValue = event.target.dataset.sort; // Получаем значение из data-sort
+            const currentUrl = window.location.pathname; // Получаем текущий путь страницы
+            window.location.href = `${currentUrl}?sort=${sortValue}`; // Переходим на новый URL
+        }
+    });
+}

@@ -18,6 +18,34 @@
                     <h2 class="">Список всех проектов</h2>
                 </div>
 
+{{--                <ul id="sort-list">--}}
+{{--                    <li data-sort="name">По имени</li>--}}
+{{--                    <li data-sort="created_at">По дате</li>--}}
+{{--                </ul>--}}
+
+
+                <div class="action action-sort">
+                    <span class="stitle">Сортировать по: </span>
+                    <div class="sort-active" >
+                        <span>{{$sortCurrent}}</span>
+                        <i class="mobi-accord-ico"></i>
+                        <div class="menu">
+                            <ul id="sort-list">
+                                <li data-sort="name">По названию</li>
+                                <li data-sort="created_at">По дате создания</li>
+                                <li data-sort="updated_at">По дате изменения</li>
+                            </ul>
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+
+
+
                 @include('flash-messages')
 
             </div>

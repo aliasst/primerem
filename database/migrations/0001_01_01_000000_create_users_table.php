@@ -20,6 +20,8 @@ return new class extends Migration
             $table->unsignedBigInteger('project_id')->default(0);
             $table->enum('status',['active','inactive'])->default('active');
             $table->string('password');
+            $table->string('avatar_file_path')->nullable();
+            $table->string('avatar_storage_path')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
