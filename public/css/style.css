@@ -511,10 +511,14 @@ header {
     display: flex;
 }
 
+.header-logo-item {
+    font-family: 'Gilroy', sans-serif!important;
+}
+
 .header-logo-item, .logo-cell {
     color: rgb(0, 0, 0);
     font-family: Homenaje;
-    font-size: 48.72px;
+    font-size: 41.72px;
     font-weight: 400;
     line-height: 53px;
     text-align: left;
@@ -1183,8 +1187,8 @@ footer {
 
 .foot-logo-item {
     color: rgb(255, 255, 255);
-    font-family: Homenaje;
-    font-size: 41.69px;
+    font-family: 'Gilroy', sans-serif!important;
+    font-size: 33.69px;
     font-weight: 400;
     line-height: 46px;
     text-align: left;

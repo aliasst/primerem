@@ -25,7 +25,7 @@
                 <div class="header-row c-row">
                     <div class="header-row-left">
                         <div class="header-item header-logo-item">
-                            Prime<span>REM</span>
+                            Прайм<span>РЕМ</span>
                         </div>
 {{--                        <div class="header-item header-menu-item">--}}
 {{--                            <ul>--}}
@@ -75,7 +75,7 @@
             <div class="col-xs-12">
                 <div class="foot-row">
                     <div class="foot-item foot-logo-item">
-                        PrimeREM
+                        ПраймРЕМ
                     </div>
                     <div class="foot-item foot-menu-item">
                         <ul>

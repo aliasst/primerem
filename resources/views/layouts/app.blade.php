@@ -17,7 +17,6 @@
 </head>
 <body>
 
-
 @yield('content')
 
 
@@ -29,7 +28,7 @@
             <div class="col-xs-12">
                 <div class="foot-row">
                     <div class="foot-item foot-logo-item">
-                        PrimeREM
+                        ПраймРЕМ
                     </div>
                     <div class="foot-item foot-menu-item">
                         <ul>

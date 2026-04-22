@@ -10,7 +10,7 @@
                 <div class="col-xs-12">
                     <div class="header-row c-row">
                         <div class="header-item header-logo-item">
-                            Prime<span>REM</span>
+                            Прайм<span>РЕМ</span>
                         </div>
                         <div class="header-item header-menu-item">
                             <ul>
