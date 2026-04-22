@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/test', [\App\Http\Controllers\Cabinet\ProjectStageController::class, 'test']);
 
-
+//Route::get('/', HomeController::class)->name('home');
 
 Route::get('/', HomeController::class)->name('home');
 
