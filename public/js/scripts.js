@@ -1,7 +1,7 @@
 
-Fancybox.bind('[data-fancybox="gallery"]', {
-    //
-});
+// Fancybox.bind('[data-fancybox="gallery"]', {
+//     //
+// });
 
 
 
@@ -357,3 +357,42 @@ if(document.getElementById('sort-list')!= null) {
         }
     });
 }
+
+
+// ==================== УПРАВЛЕНИЕ COOKIE БАННЕРОМ ====================
+document.addEventListener('DOMContentLoaded', function() {
+    const cookieBanner = document.getElementById('cookie-banner');
+    if (!cookieBanner) return;
+
+    // Проверяем, было ли уже решение
+    const consentGiven = localStorage.getItem('cookie_consent');
+    if (consentGiven !== null) {
+        cookieBanner.style.display = 'none';
+        return;
+    }
+
+    // Показываем баннер
+    cookieBanner.style.display = 'block';
+
+    // Обработчик принятия всех
+    const acceptBtn = document.getElementById('cookie-accept');
+    if (acceptBtn) {
+        acceptBtn.addEventListener('click', function() {
+            localStorage.setItem('cookie_consent', 'all');
+            cookieBanner.style.display = 'none';
+            // Здесь можно активировать сервисы сбора аналитики (например, Яндекс.Метрику)
+            console.log('Пользователь принял все cookie');
+        });
+    }
+
+    // Обработчик отказа (только технические)
+    const declineBtn = document.getElementById('cookie-decline');
+    if (declineBtn) {
+        declineBtn.addEventListener('click', function() {
+            localStorage.setItem('cookie_consent', 'technical');
+            cookieBanner.style.display = 'none';
+            // Здесь можно отключить необязательные сервисы (аналитика, маркетинг)
+            console.log('Пользователь разрешил только технические cookie');
+        });
+    }
+});

@@ -142,7 +142,7 @@
                     </div>
                     <div class="foot-item l-item">
                         <span>© 2025 Все права защищены</span>
-                        <a href="">Политика конфиденциальности</a>
+
 
                     </div>
 

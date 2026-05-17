@@ -54,11 +54,17 @@
                         </ul>
                     </div>
                     <div class="foot-item l-item">
-                        <span>© 2025 Все права защищены</span>
-                        <a href="">Политика конфиденциальности</a>
+                        <span>© 2026 Все права защищены</span>
+
 
                     </div>
 
+                </div>
+                <div class="footer-links">
+                    <a href="/privacy-policy.html">Политика конфиденциальности</a>
+                    <a href="/consent-personal-data.html">Согласие на обработку персональных данных</a>
+                    <a href="/consent-mailing.html">Согласие на информационную рассылку</a>
+                    <a href="/cookie-policy.html" class="">Политика использования cookie (куки)</a>
                 </div>
             </div>
         </div>
@@ -85,6 +91,22 @@
         </div>
     </div>
 </div>
+
+<div id="cookie-banner" class="cookie-banner" style="display: none;">
+    <div class="cookie-banner-content">
+        <div class="cookie-text">
+            <strong>Сайт «ПраймРем» использует cookie (куки)</strong>
+            <p>Мы собираем данные об использовании сайта, чтобы сделать его удобнее и показывать вам релевантные материалы.</p>
+        </div>
+        <div class="cookie-buttons">
+            <button id="cookie-accept" class="cookie-btn cookie-btn-accept">Принять все</button>
+            <button id="cookie-decline" class="cookie-btn cookie-btn-decline">Отказаться (только технические)</button>
+            <a href="/cookie-policy.html" class="cookie-link">Подробнее: Политика использования cookie (куки)</a>
+        </div>
+    </div>
+</div>
+
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/noframework.waypoints.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"></script>

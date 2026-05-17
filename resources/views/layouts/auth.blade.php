@@ -107,6 +107,12 @@
                     </div>
 
                 </div>
+                <div class="footer-links">
+                    <a href="/privacy-policy.html">Политика конфиденциальности</a>
+                    <a href="/consent-personal-data.html">Согласие на обработку персональных данных</a>
+                    <a href="/consent-mailing.html">Согласие на информационную рассылку</a>
+                    <a href="/cookie-policy.html" class="">Политика использования cookie (куки)</a>
+                </div>
             </div>
         </div>
     </div>
