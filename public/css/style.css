@@ -3580,6 +3580,11 @@ table.requests .fa:hover, .stage-table .fa:hover{
 
     .header-row {
         margin-bottom: 40px;
+        flex-direction: column;
+    }
+    .mail-item {
+        margin-top: 10px;
+        margin-bottom: 10px;
     }
 
     .auth-body .header-row-right .header-item.mes-item {
