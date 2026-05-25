@@ -68,7 +68,7 @@
                             <div class="what-item">Приложение. Нейросети при работе</div>
                         </div>
                         <a href="{{route('login')}}" type="button" class="orange-btn orange-btn_larg">
-                            Скачать приложение
+                            Перейти в кабинет
                         </a>
                     </div>
                 </div>
@@ -185,7 +185,7 @@
                                 <div class="what-item">Результат потрясающий</div>
                             </div>
                             <a href="{{route('login')}}" type="button" class="orange-btn orange-btn_larg">
-                                Скачать приложение
+                                Перейти в кабинет
                             </a>
                         </div>
 
@@ -215,7 +215,7 @@
                             <p>Остальное – Мы сделаем за Вас!</p>
 
                             <a href="{{route('login')}}" type="button" class="orange-btn orange-btn_larg">
-                                Скачать приложение
+                                Перейти в кабинет
                             </a>
 
                         </div>
