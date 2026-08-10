@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\MaintenanceMode;
 use App\Http\Middleware\OnlyAuth;
 use App\Http\Middleware\OnlyGuest;
 use Illuminate\Foundation\Application;
@@ -13,6 +14,8 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
+        $middleware->append(MaintenanceMode::class);
+
         $middleware->alias([
             'only-guest' => OnlyGuest::class,
             'only-auth' => OnlyAuth::class,
