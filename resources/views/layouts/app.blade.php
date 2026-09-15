@@ -56,8 +56,8 @@
                    </div>
                    -->
 
-                    <a style="color:#fff;    font-size: 14px;" class="mail-item" href="info@primerem.ru">
-                        info@primerem.ru
+                    <a style="color:#fff;    font-size: 14px;" class="mail-item" href="info@primerem.info">
+                        info@primerem.info
                     </a>
 
                     <div class="foot-item l-item">

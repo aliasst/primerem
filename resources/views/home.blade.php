@@ -50,8 +50,8 @@
                         -->
 
 
-                        <a class="mail-item" href="info@primerem.ru">
-                            info@primerem.ru
+                        <a class="mail-item" href="info@primerem.info">
+                            info@primerem.info
                         </a>
                         <div>
 
